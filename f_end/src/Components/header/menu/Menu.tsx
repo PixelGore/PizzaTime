@@ -1,0 +1,59 @@
+import { FC } from "react";
+import "./Menu.scss";
+import { NavLink } from "react-router-dom";
+
+export const Menu: FC<any> = ({ isActive, setIsActive }) => {
+  return (
+    <nav className={isActive ? "mobile-menu active" : "mobile-menu"}>
+      <div className="blur"/>
+      <ul className="nav-list">
+        <li className="nav-item">
+          <NavLink to="/" className="nav-link">
+            <span className="material-icons">home</span>
+            Home
+          </NavLink>
+        </li>
+        <li className="nav-item">
+          <NavLink
+            to="/"
+            className="nav-link"
+            onClick={() => setIsActive(!isActive)}
+          >
+            <span className="material-icons">groups</span>
+            About us
+          </NavLink>
+        </li>
+        <li className="nav-item">
+          <NavLink
+            to="/"
+            className="nav-link"
+            onClick={() => setIsActive(!isActive)}
+          >
+            <span className="material-icons">local_dining</span>
+            Menu
+          </NavLink>
+        </li>
+        <li className="nav-item">
+          <NavLink
+            to="/"
+            className="nav-link"
+            onClick={() => setIsActive(!isActive)}
+          >
+            <span className="material-icons">contacts</span>
+            Contacts
+          </NavLink>
+        </li>
+        <li className="nav-item">
+          <NavLink
+            to="/"
+            className="nav-link"
+            onClick={() => setIsActive(!isActive)}
+          >
+            <span className="material-icons">login</span>
+            Login
+          </NavLink>
+        </li>
+      </ul>
+    </nav>
+  );
+};
