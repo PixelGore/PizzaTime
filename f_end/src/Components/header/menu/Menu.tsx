@@ -15,7 +15,7 @@ export const Menu: FC<any> = ({ isActive, setIsActive }) => {
         </li>
         <li className="nav-item">
           <NavLink
-            to="/"
+            to="/about"
             className="nav-link"
             onClick={() => setIsActive(!isActive)}
           >
@@ -25,7 +25,7 @@ export const Menu: FC<any> = ({ isActive, setIsActive }) => {
         </li>
         <li className="nav-item">
           <NavLink
-            to="/"
+            to="/menu"
             className="nav-link"
             onClick={() => setIsActive(!isActive)}
           >
@@ -35,7 +35,7 @@ export const Menu: FC<any> = ({ isActive, setIsActive }) => {
         </li>
         <li className="nav-item">
           <NavLink
-            to="/"
+            to="/contacts"
             className="nav-link"
             onClick={() => setIsActive(!isActive)}
           >
@@ -45,7 +45,7 @@ export const Menu: FC<any> = ({ isActive, setIsActive }) => {
         </li>
         <li className="nav-item">
           <NavLink
-            to="/"
+            to="/login"
             className="nav-link"
             onClick={() => setIsActive(!isActive)}
           >

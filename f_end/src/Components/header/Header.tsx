@@ -1,6 +1,5 @@
 import { NavLink } from "react-router-dom";
 import "./Header.scss";
-import "../../App.scss";
 import logo from "../../assets/common/logo.svg";
 import { useState } from "react";
 import { Menu } from "./menu/Menu";
@@ -71,14 +70,14 @@ export const Header: React.FC = (props: any) => {
               {/* End Menu */}
               <div className="header__end">
                 <div className="header__login">
-                  <NavLink to="/" className="header__login-link">
+                  <NavLink to="/login" className="header__login-link">
                     <span className="login-text">
                       <span className="material-icons">login</span>
                     </span>
                   </NavLink>
                 </div>
                 <div className="header__cart">
-                  <NavLink to="#" className="header__cart-link">
+                  <NavLink to="/cart" className="header__cart-link">
                     <span className="cart-text" data-before="3">
                       <span className="material-icons">shopping_cart</span>
                     </span>

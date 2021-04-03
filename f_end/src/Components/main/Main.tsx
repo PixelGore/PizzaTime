@@ -1,7 +1,6 @@
 import { FC } from "react";
 import { NavLink } from "react-router-dom";
-import  "./Main.scss";
-import "../../App.scss";
+import "./Main.scss";
 
 
 export const Main: FC = () => {
