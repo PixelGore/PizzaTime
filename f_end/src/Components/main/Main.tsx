@@ -6,7 +6,7 @@ import "./Main.scss";
 export const Main: FC = () => {
   return (
     <>
-      <section className="wrapper">
+      <section className="main_wrapper">
         <div className="container wrapper__container">
           <p className="container__info">from italian chef</p>
           <h1 className="container__title">The best pizza of Melbourne</h1>
