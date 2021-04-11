@@ -4,19 +4,25 @@ import { Footer } from "./Components/footer/Footer";
 import { Main } from "./Components/main/Main";
 import { About } from "./Components/about/About";
 import { Contacts } from "./Components/contacts/Contacts";
+import { Menu } from "./Components/menu/Menu";
+import { Provider } from "react-redux";
+import store from "./Redux/reduxStore";
 
 function App() {
   return (
     <BrowserRouter>
-      <Header />
-      <Switch>
-        <Route path="/home" render={()=> <Main/>} />
-        <Route path="/about" render={()=> <About/>} />
-        <Route path="/contacts" render={()=> <Contacts/>} />
-        <Redirect from="/" to="/home" />
-      </Switch>
-      
-      <Footer />
+      <Provider store={store}>
+        <Header />
+        <Switch>
+          <Route path="/home" render={() => <Main />} />
+          <Route path="/about" render={() => <About />} />
+          <Route path="/contacts" render={() => <Contacts />} />
+          <Route path="/menu" render={() => <Menu />} />
+          <Redirect from="/" to="/home" />
+        </Switch>
+
+        <Footer />
+      </Provider>
     </BrowserRouter>
   );
 }
