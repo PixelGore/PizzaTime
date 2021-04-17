@@ -4,9 +4,12 @@ import logo from "../../assets/common/logo.svg";
 import { useState } from "react";
 import { Menu } from "./menu/Menu";
 import { Cart } from "./cart/Cart";
+import { useSelector } from "react-redux";
+import { getCart } from "../../Redux/Selectors/cartSelector";
 
-export const Header: React.FC = (props: any) => {
+export const Header: React.FC = () => {
   const [isActive, setIsActive] = useState(false);
+  let cartItems = useSelector(getCart)
 
   return (
     <>
@@ -79,7 +82,7 @@ export const Header: React.FC = (props: any) => {
                 </div>
                 <div className="header__cart">
                   <NavLink to="/cart" className="header__cart-link">
-                    <span className="cart-text" data-before="3">
+                    <span className="cart-text" data-before={cartItems.length}>
                       <span className="material-icons">shopping_cart</span>
                     </span>
                   </NavLink>
@@ -89,7 +92,7 @@ export const Header: React.FC = (props: any) => {
           </div>
         </header>
         <Menu isActive={isActive} setIsActive={setIsActive} />
-        <Cart/>
+        <Cart cartItems={cartItems} />
       </div>
     </>
   );

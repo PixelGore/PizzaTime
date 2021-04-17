@@ -14,39 +14,69 @@
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     }
 
-    .cart-item {
-        .cart-item__info {
-            .item__description {
-                opacity: 0.7;
+    .cart-Items {
+        max-height: 280px;
+        overflow-y: scroll;
+
+        .cart-item {
+            display: flex;
+            justify-items: center;
+            align-items: center;
+            border-bottom: 1px solid #fff;
+
+            &:last-child{
+                border-bottom: none;
             }
 
-            .item__pricing {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
+            img {
+                height: 100px;
+            }
 
-                .quantity {
-                    display: flex;
-                    align-items: center;
+            .cart-item__info {
+                width: 100%;
 
-                    .material-icons {
-                        cursor: pointer;
-                    }
+                h3,
+                h5 {
+                    margin-top: 0;
+                    margin-bottom: 10px;
+                    padding: 0 10px;
                 }
 
-                .price {
+                .item__description {
+                    opacity: 0.7;
+                    font-size: 0.7em;
+                }
+
+                .item__pricing {
+                    margin-right: 10px;
                     display: flex;
                     align-items: center;
+                    justify-content: space-between;
 
-                    .material-icons {
-                        cursor: pointer;
-                        margin-right: 5px;
-                        color: red;
+                    .quantity {
+                        display: flex;
+                        align-items: center;
+
+                        .material-icons {
+                            cursor: pointer;
+                        }
+                    }
+
+                    .price {
+                        display: flex;
+                        align-items: center;
+
+                        .material-icons {
+                            cursor: pointer;
+                            margin-right: 5px;
+                            color: red;
+                        }
                     }
                 }
             }
         }
     }
+
 
     .cart-total {
         display: flex;

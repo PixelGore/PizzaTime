@@ -1,7 +1,9 @@
 import { FC, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { actions } from "../../Redux/Reducers/cartReducer";
 import { requestMenu } from "../../Redux/Reducers/menuReducer";
 import { getMenu } from "../../Redux/Selectors/menuSelector";
+import { ProductsType } from "../../types/types";
 import './Menu.scss'
 import { Product } from "./Product/Product";
 
@@ -13,8 +15,11 @@ export const Menu: FC = () => {
 
     useEffect(() => {
         dispatch(requestMenu())
-    }, [])
+    }, [dispatch])
 
+    let addToCart = (product:ProductsType) => {
+        dispatch(actions.setCartAC(product))
+    }
     return (
         <div className="menu-content">
             <div className="container">
@@ -28,7 +33,7 @@ export const Menu: FC = () => {
 
                     <div className="menu-items">
                         {menu.map(product =>
-                            <Product key={product.id} image={product.image} name={product.name} price={product.price} />
+                            <Product key={product.id} product={product} addToCart={addToCart} />
                         )}
                     </div>
 

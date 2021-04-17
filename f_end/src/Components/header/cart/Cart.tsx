@@ -1,29 +1,20 @@
+import { FC } from "react"
 import { NavLink } from "react-router-dom"
+import { ProductsType } from "../../../types/types"
 import "./Cart.scss"
+import { CartItem } from "./CartItem/CartItem"
 
-export const Cart = () => {
+export const Cart: FC<CartType> = (cartItems) => {
     return (
         <div className="cart-container">
             <span className="cart-title">Your Cart</span>
             <hr />
-            <div className="cart-item">
-                <img src="#" alt="product" />
-                <div className="cart-item__info">
-                    <h3 className="item__title">Rancho</h3>
-                    <h5 className="item__description">Lorem ipsum dolor, sit amet consectetur adipisicing.</h5>
-                    <div className="item__pricing">
-                        <span className="quantity">
-                            <span className="material-icons">remove</span>
-                            <span className="item-qty">1</span>
-                            <span className="material-icons">add</span>
-                        </span>
-                        <span className="price">
-                            <span className="material-icons">close</span>
-                            <span className="item-price">$12</span>
-                        </span>
-                    </div>
-                </div>
+            <div className="cart-Items">
+                {cartItems.cartItems.map(product =>
+                    <CartItem key={product.id} product={product} />
+                )}
             </div>
+
             <hr />
             <div className="cart-total">
                 <span className="text">Subtotal</span>
@@ -42,4 +33,7 @@ export const Cart = () => {
             </div>
         </div>
     )
+}
+type CartType = {
+    cartItems: ProductsType[]
 }

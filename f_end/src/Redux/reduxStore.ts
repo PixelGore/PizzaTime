@@ -1,10 +1,12 @@
 import { createStore, combineReducers, Action, applyMiddleware } from "redux"
 import thunkMiddleware, { ThunkAction } from "redux-thunk";
+import cartReducer from "./Reducers/cartReducer";
 import menuReducer from "./Reducers/menuReducer"
 
 
 let RootReducer = combineReducers({
-    menuPage: menuReducer
+    menuPage: menuReducer,
+    cart: cartReducer,
 })
 export type AppStateType = ReturnType<typeof RootReducer>
 
