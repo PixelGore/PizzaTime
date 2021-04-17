@@ -7,6 +7,7 @@ import { Contacts } from "./Components/contacts/Contacts";
 import { Menu } from "./Components/menu/Menu";
 import { Provider } from "react-redux";
 import store from "./Redux/reduxStore";
+import { Checkout } from "./Components/cart/Checkout";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/about" render={() => <About />} />
           <Route path="/contacts" render={() => <Contacts />} />
           <Route path="/menu" render={() => <Menu />} />
+          <Route path="/checkout" render={() => <Checkout />} />
           <Redirect from="/" to="/home" />
         </Switch>
 
