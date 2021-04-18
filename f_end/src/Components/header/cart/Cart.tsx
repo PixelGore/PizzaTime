@@ -4,16 +4,35 @@ import { ProductsType } from "../../../types/types"
 import "./Cart.scss"
 import { CartItem } from "./CartItem/CartItem"
 
-export const Cart: FC<CartType> = (cartItems) => {
+export const Cart: FC<CartType> = ({ cartItems }) => {
+
     return (
         <div className="cart-container">
             <span className="cart-title">Your Cart</span>
             <hr />
-            <div className="cart-Items">
-                {cartItems.cartItems.map(product =>
-                    <CartItem key={product.id} product={product} />
-                )}
-            </div>
+            {cartItems.length === 0 ?
+                <div className="empty-cart">
+                    <h4>Your cart looks such empty &#128517;</h4>
+                    <div className="redirect-container">
+                        <span className="redirect-text">
+                            Let me help you by showing you our menu !
+                        </span>
+                        <button className="redirect-btn">
+                            To Menu
+                            <NavLink to="/menu">
+                                <span className="material-icons">send</span>
+                            </NavLink>
+                        </button>
+                    </div>
+
+                </div>
+                :
+                <div className="cart-Items">
+                    {cartItems.map(product =>
+                        <CartItem key={product.id} product={product} />
+                    )}
+                </div>
+            }
 
             <hr />
             <div className="cart-total">

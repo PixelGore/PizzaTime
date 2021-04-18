@@ -14,6 +14,38 @@
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     }
 
+    .empty-cart {
+        margin: 30px 0;
+
+        h4 {
+            text-align: center;
+        }
+
+        .redirect-container {
+            display: flex;
+            flex-direction: column;
+
+            .redirect-text {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .redirect-btn {
+                background-color: aqua;
+                color: #fff;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 0;
+
+                .material-icons {
+                    margin-left: 10px;
+                    color: #fff;
+                }
+            }
+        }
+    }
+
     .cart-Items {
         max-height: 280px;
         overflow-y: scroll;
@@ -24,7 +56,7 @@
             align-items: center;
             border-bottom: 1px solid #fff;
 
-            &:last-child{
+            &:last-child {
                 border-bottom: none;
             }
 

@@ -10,4 +10,5 @@ export type ProductsType = {
     price: string;
     category_name: string;
     image: string | null;
+    quantity: string;
 }
