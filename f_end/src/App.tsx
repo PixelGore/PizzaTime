@@ -7,7 +7,7 @@ import { Contacts } from "./Components/contacts/Contacts";
 import { Menu } from "./Components/menu/Menu";
 import { Provider } from "react-redux";
 import store from "./Redux/reduxStore";
-import { Checkout } from "./Components/cart/Checkout";
+import { Checkout } from "./Components/checkout/Checkout";
 
 function App() {
   return (

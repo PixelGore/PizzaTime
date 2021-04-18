@@ -41,7 +41,7 @@ export const Cart: FC<CartType> = ({ cartItems, isActive }) => {
                 <span>$57.98</span>
             </div>
             <div className="cart-description">
-                <h5>FREE DOMESTIC SHIPPING OVER $50</h5>
+                <h5>FREE DOMESTIC SHIPPING OVER $75</h5>
             </div>
             <div className="cart-checkout">
                 <NavLink to="/checkout">
