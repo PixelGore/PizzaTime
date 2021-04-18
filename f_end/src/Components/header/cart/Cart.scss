@@ -5,9 +5,14 @@
     background-color: #1D1D1D;
     position: fixed;
     top: 0;
-    right: 0;
+    right: -1000px;
     padding: 15px;
+    border-radius: 16px;
+    transition: right .8s ease-out;
 
+    &.active {
+        right: 0;
+    }
     .cart-title {
         font-size: 2em;
         font-weight: 350;

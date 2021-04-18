@@ -4,10 +4,11 @@ import { ProductsType } from "../../../types/types"
 import "./Cart.scss"
 import { CartItem } from "./CartItem/CartItem"
 
-export const Cart: FC<CartType> = ({ cartItems }) => {
+export const Cart: FC<CartType> = ({ cartItems, isActive }) => {
 
     return (
-        <div className="cart-container">
+
+        <div className={isActive ? "cart-container active" : "cart-container"}>
             <span className="cart-title">Your Cart</span>
             <hr />
             {cartItems.length === 0 ?
@@ -54,5 +55,6 @@ export const Cart: FC<CartType> = ({ cartItems }) => {
     )
 }
 type CartType = {
-    cartItems: ProductsType[]
+    cartItems: ProductsType[],
+    isActive: boolean
 }

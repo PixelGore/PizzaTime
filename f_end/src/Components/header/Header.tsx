@@ -8,7 +8,8 @@ import { useSelector } from "react-redux";
 import { getCart } from "../../Redux/Selectors/cartSelector";
 
 export const Header: React.FC = () => {
-  const [isActive, setIsActive] = useState(false);
+  const [isOpenBrg, setisOpenBrg] = useState(false);
+  const [isOpenCart, setisOpenCart] = useState(false)
   let cartItems = useSelector(getCart)
 
   return (
@@ -23,9 +24,9 @@ export const Header: React.FC = () => {
               {/* Burger */}
               <div
                 className={
-                  isActive ? "header__burger active" : "header__burger"
+                  isOpenBrg ? "header__burger active" : "header__burger"
                 }
-                onClick={() => setIsActive(!isActive)}
+                onClick={() => { setisOpenBrg(!isOpenBrg); setisOpenCart(false) }}
               >
                 <span className="burger_middle"></span>
               </div>
@@ -80,19 +81,17 @@ export const Header: React.FC = () => {
                     </span>
                   </NavLink>
                 </div>
-                <div className="header__cart">
-                  <NavLink to="/cart" className="header__cart-link">
-                    <span className="cart-text" data-before={cartItems.length}>
-                      <span className="material-icons">shopping_cart</span>
-                    </span>
-                  </NavLink>
+                <div className="header__cart" onClick={() => { setisOpenCart(!isOpenCart); setisOpenBrg(false) }}>
+                  <span className="cart-text" data-before={cartItems.length}>
+                    <span className="material-icons">shopping_cart</span>
+                  </span>
                 </div>
               </div>
             </div>
           </div>
         </header>
-        <Menu isActive={isActive} setIsActive={setIsActive} />
-        <Cart cartItems={cartItems} />
+        <Menu isActive={isOpenBrg} setIsActive={setisOpenBrg} />
+        <Cart cartItems={cartItems} isActive={isOpenCart} />
       </div>
     </>
   );
