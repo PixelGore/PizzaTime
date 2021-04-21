@@ -1,10 +1,21 @@
 import { FC } from "react"
+import { useDispatch } from "react-redux"
 import { NavLink } from "react-router-dom"
+import { actions } from "../../../Redux/Reducers/cartReducer"
 import { ProductsType } from "../../../types/types"
 import "./Cart.scss"
 import { CartItem } from "./CartItem/CartItem"
 
 export const Cart: FC<CartType> = ({ cartItems, isActive }) => {
+
+    const dispatch = useDispatch()
+
+    let handlequantity = (product: ProductsType) => {
+        dispatch(actions.setCartAC(product))
+    }
+    let rmItem = (product: ProductsType,) => {
+        dispatch(actions.RMCartAC(product))
+    }
 
     return (
 
@@ -30,7 +41,7 @@ export const Cart: FC<CartType> = ({ cartItems, isActive }) => {
                 :
                 <div className="cart-Items">
                     {cartItems.map(product =>
-                        <CartItem key={product.id} product={product} />
+                        <CartItem key={product.id} product={product} handlequantity={handlequantity} rmItem={rmItem} />
                     )}
                 </div>
             }

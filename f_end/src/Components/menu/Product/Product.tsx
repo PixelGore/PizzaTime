@@ -4,6 +4,11 @@ import '../Menu.scss'
 
 export const Product: FC<PropsType> = ({ product, addToCart }) => {
 
+    let handleClick = () => {
+        product.quantity++
+        addToCart(product)
+    }
+
     return (
         <div className="menu-item">
             <img src={`http://127.0.0.1:8000${product.image}`} alt="menu" className="menu-item__image" />
@@ -12,7 +17,7 @@ export const Product: FC<PropsType> = ({ product, addToCart }) => {
                 <span className="menu-item__title">{product.name}</span>
                 <span className="material-icons menu__info-btn">info</span>
             </div>
-            <div className="menu-item-end" onClick={() => addToCart(product)}>
+            <div className="menu-item-end" onClick={() => handleClick()}>
                 <span className="item__price">${product.price}</span>
                 <span className="material-icons">add_shopping_cart</span>
             </div>
@@ -21,5 +26,5 @@ export const Product: FC<PropsType> = ({ product, addToCart }) => {
 }
 type PropsType = {
     product: ProductsType,
-    addToCart:(product:ProductsType) => void
+    addToCart: (product: ProductsType) => void
 }

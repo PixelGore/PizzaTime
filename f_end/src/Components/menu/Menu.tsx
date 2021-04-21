@@ -13,13 +13,15 @@ export const Menu: FC = () => {
 
     const dispatch = useDispatch()
 
+
     useEffect(() => {
         dispatch(requestMenu())
     }, [dispatch])
 
-    let addToCart = (product:ProductsType) => {
+    let handleAddToCart = (product: ProductsType) => {
         dispatch(actions.setCartAC(product))
     }
+    
     return (
         <div className="menu-content">
             <div className="container">
@@ -33,7 +35,7 @@ export const Menu: FC = () => {
 
                     <div className="menu-items">
                         {menu.map(product =>
-                            <Product key={product.id} product={product} addToCart={addToCart} />
+                            <Product key={product.id} product={product} addToCart={handleAddToCart} />
                         )}
                     </div>
 

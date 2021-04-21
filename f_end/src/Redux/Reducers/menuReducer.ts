@@ -7,13 +7,11 @@ import { Dispatch } from 'redux';
 // ActionCreators
 export const actions = {
     setMenuAC: (products: ProductsType[]) => ({ type: 'menuPage/SET_MENU', products } as const),
-    setInitiatedAC: () => ({ type: 'menuPage/InitiatedMenu'} as const)
 }
 type ActonTypes = InferActionTypes<typeof actions>
 
 let initialState = {
-    products: [] as ProductsType[],
-    menuInitiated: false
+    products: [] as ProductsType[]
 }
 type InitialStateType = typeof initialState
 
@@ -25,11 +23,6 @@ const menuReducer = (state = initialState, action: ActonTypes): InitialStateType
             return {
                 ...state,
                 products: action.products
-            }
-        case "menuPage/InitiatedMenu":
-            return {
-                ...state,
-                menuInitiated: true
             }
 
         default:
@@ -44,7 +37,6 @@ type ThunkType = BaseThunkType<ActonTypes>
 export const requestMenu = (): ThunkType => {
     return async (dispatch:DispatchType) => {
         let data = await menuAPI.getMenu()
-        dispatch(actions.setInitiatedAC())
         dispatch(actions.setMenuAC(data))
     }
 }
