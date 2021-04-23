@@ -24,13 +24,18 @@ export const CartItem: FC<cartItemType> = ({ product, handlequantity, rmItem }) 
                 <h5 className="item__description">{product.description}</h5>
                 <div className="item__pricing">
                     <span className="quantity">
-                        <span className="material-icons" onClick={() => handleReduce()}>remove</span>
+                        <button className="btn" disabled={product.quantity <= 1} onClick={() => handleReduce()}>
+                            <span className="material-icons">remove</span>
+                        </button>
+
                         <span className="item-qty">{product.quantity}</span>
-                        <span className="material-icons" onClick={() => handleIncrease()}>add</span>
+                        <button className="btn">
+                            <span className="material-icons" onClick={() => handleIncrease()}>add</span>
+                        </button>
                     </span>
                     <span className="price">
                         <span className="material-icons" onClick={() => handleRemove()}>close</span>
-                        <span className="item-price">${product.price}</span>
+                        <span className="item-price">${+product.price * product.quantity}</span>
                     </span>
                 </div>
             </div>
