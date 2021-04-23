@@ -35,7 +35,7 @@ export const CartItem: FC<cartItemType> = ({ product, handlequantity, rmItem }) 
                     </span>
                     <span className="price">
                         <span className="material-icons" onClick={() => handleRemove()}>close</span>
-                        <span className="item-price">${+product.price * product.quantity}</span>
+                        <span className="item-price">${(+product.price * product.quantity).toFixed(2)}</span>
                     </span>
                 </div>
             </div>
