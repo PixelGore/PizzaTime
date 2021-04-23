@@ -3,7 +3,8 @@ import { ProductsType } from '../../../types/types'
 import '../Menu.scss'
 
 export const Product: FC<PropsType> = ({ product, addToCart }) => {
-
+    product.quantity = 0;
+    
     let handleClick = () => {
         product.quantity++
         addToCart(product)
