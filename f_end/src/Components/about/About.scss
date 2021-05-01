@@ -111,7 +111,11 @@
         }
     }
 }
-
+.map-marker {
+    height: auto;
+    max-width: 100%;
+    position: absolute;
+}
 
 
 @media(max-width:767px) {

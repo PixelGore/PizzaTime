@@ -1,8 +1,9 @@
 import { FC } from "react";
 import "./About.scss";
 import image from "../../assets/common/pizza.svg";
+import Map from "./map/GMap";
 
-export const About: FC = () => {
+const About: FC = () => {
   return (
     <div className="about-content">
       <div className="about-section">
@@ -86,7 +87,7 @@ export const About: FC = () => {
             <p>415 Malvern Road South Yarra, Melbourne</p>
           </div>
 
-          <div className="map"></div>
+          <Map />
         </div>
         <div className="contact-section">
           <h3>Have a question ?</h3>
@@ -104,3 +105,5 @@ export const About: FC = () => {
     </div>
   );
 };
+
+export default About;

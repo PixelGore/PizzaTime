@@ -1,0 +1,11 @@
+.preLoader {
+    position: fixed;
+    top: 30%;
+    left: 45%;
+}
+
+@media (max-width: 500px) {
+    .preLoader {
+        left: 35%;
+    }
+}
