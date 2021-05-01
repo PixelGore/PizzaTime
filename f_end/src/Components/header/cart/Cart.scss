@@ -13,10 +13,20 @@
     &.active {
         right: 0;
     }
+
     .cart-title {
         font-size: 2em;
         font-weight: 350;
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .material-icons {
+            font-size: 1.3em;
+            color: red;
+            cursor: pointer;
+        }
     }
 
     .empty-cart {
@@ -35,17 +45,22 @@
                 margin-bottom: 20px;
             }
 
-            .redirect-btn {
-                background-color: aqua;
-                color: #fff;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                border: 0;
+            .redirect-link {
+                text-decoration: none;
 
-                .material-icons {
-                    margin-left: 10px;
+                .redirect-btn {
+                    text-decoration: none;
+                    background-color: aqua;
                     color: #fff;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border: 0;
+
+                    .material-icons {
+                        margin-left: 10px;
+                        color: #fff;
+                    }
                 }
             }
         }
@@ -60,6 +75,7 @@
             justify-items: center;
             align-items: center;
             border-bottom: 1px solid #fff;
+            padding: 5px 0;
 
             &:last-child {
                 border-bottom: none;
@@ -129,6 +145,9 @@
 
         .text {
             text-transform: uppercase;
+        }
+        .price {
+            padding-right: 10px;
         }
     }
 

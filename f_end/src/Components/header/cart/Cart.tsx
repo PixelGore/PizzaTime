@@ -1,4 +1,4 @@
-import { FC } from "react"
+import { Dispatch, FC, SetStateAction } from "react"
 import { useDispatch } from "react-redux"
 import { NavLink } from "react-router-dom"
 import { actions } from "../../../Redux/Reducers/cartReducer"
@@ -6,7 +6,7 @@ import { ProductsType } from "../../../types/types"
 import "./Cart.scss"
 import { CartItem } from "./CartItem/CartItem"
 
-export const Cart: FC<CartType> = ({ cartItems, isActive }) => {
+export const Cart: FC<CartType> = ({ cartItems, isActive, setisOpenCart }) => {
 
     const dispatch = useDispatch()
 
@@ -20,21 +20,26 @@ export const Cart: FC<CartType> = ({ cartItems, isActive }) => {
     return (
 
         <div className={isActive ? "cart-container active" : "cart-container"}>
-            <span className="cart-title">Your Cart</span>
+
+            <div className="cart-title">
+                <span>Your Cart</span>
+                <span className="material-icons" onClick={() => setisOpenCart(false)}>arrow_right_alt</span>
+            </div>
+
             <hr />
             {cartItems.length === 0 ?
                 <div className="empty-cart">
-                    <h4>Your cart looks such empty &#128517;</h4>
+                    <h4>Your cart looks such empty 😅</h4>
                     <div className="redirect-container">
                         <span className="redirect-text">
                             Let me help you by showing you our menu !
                         </span>
-                        <button className="redirect-btn">
-                            To Menu
-                            <NavLink to="/menu">
+                        <NavLink to="/menu" className="redirect-link">
+                            <div className="redirect-btn">
+                                To Menu
                                 <span className="material-icons">send</span>
-                            </NavLink>
-                        </button>
+                            </div>
+                        </NavLink>
                     </div>
 
                 </div>
@@ -49,7 +54,7 @@ export const Cart: FC<CartType> = ({ cartItems, isActive }) => {
             <hr />
             <div className="cart-total">
                 <span className="text">Subtotal</span>
-                <span>
+                <span className="price">
                     ${cartItems.reduce((total, product) => total + product.price * product.quantity, 0).toFixed(2)}
                 </span>
             </div>
@@ -69,5 +74,6 @@ export const Cart: FC<CartType> = ({ cartItems, isActive }) => {
 }
 type CartType = {
     cartItems: ProductsType[],
-    isActive: boolean
+    isActive: boolean,
+    setisOpenCart: Dispatch<SetStateAction<boolean>>
 }

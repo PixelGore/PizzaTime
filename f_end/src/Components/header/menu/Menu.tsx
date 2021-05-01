@@ -1,11 +1,11 @@
-import { FC } from "react";
+import { Dispatch, FC, SetStateAction } from "react";
 import "./Menu.scss";
 import { NavLink } from "react-router-dom";
 
-export const Menu: FC<any> = ({ isActive, setIsActive }) => {
+export const Menu: FC<PropsType> = ({ isActive, setIsActive }) => {
   return (
     <nav className={isActive ? "mobile-menu active" : "mobile-menu"}>
-      <div className="blur"/>
+      <div className="blur" />
       <ul className="nav-list">
         <li className="nav-item">
           <NavLink to="/" className="nav-link">
@@ -57,3 +57,7 @@ export const Menu: FC<any> = ({ isActive, setIsActive }) => {
     </nav>
   );
 };
+type PropsType = {
+  isActive: boolean,
+  setIsActive: Dispatch<SetStateAction<boolean>>
+}

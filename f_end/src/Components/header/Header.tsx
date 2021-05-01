@@ -91,7 +91,7 @@ export const Header: React.FC = () => {
           </div>
         </header>
         <Menu isActive={isOpenBrg} setIsActive={setisOpenBrg} />
-        <Cart cartItems={cartItems} isActive={isOpenCart} />
+        <Cart cartItems={cartItems} isActive={isOpenCart} setisOpenCart={setisOpenCart} />
       </div>
     </>
   );
