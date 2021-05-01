@@ -49,7 +49,9 @@ export const Cart: FC<CartType> = ({ cartItems, isActive }) => {
             <hr />
             <div className="cart-total">
                 <span className="text">Subtotal</span>
-                <span>$57.98</span>
+                <span>
+                    ${cartItems.reduce((total, product) => total + product.price * product.quantity, 0).toFixed(2)}
+                </span>
             </div>
             <div className="cart-description">
                 <h5>FREE DOMESTIC SHIPPING OVER $75</h5>

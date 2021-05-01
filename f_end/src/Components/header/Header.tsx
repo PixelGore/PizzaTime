@@ -82,7 +82,7 @@ export const Header: React.FC = () => {
                   </NavLink>
                 </div>
                 <div className="header__cart" onClick={() => { setisOpenCart(!isOpenCart); setisOpenBrg(false) }}>
-                  <span className="cart-text" data-before={cartItems.length}>
+                  <span className="cart-text" data-before={cartItems.reduce((items, product) => items + product.quantity, 0)}>
                     <span className="material-icons">shopping_cart</span>
                   </span>
                 </div>
