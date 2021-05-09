@@ -1,4 +1,31 @@
-.cart-container {
-    padding: 150px 0;
+.checkout-container {
+    padding: 150px;
     color: #fff;
+
+    .text {
+        text-align: center;
+    }
+
+    .ordering-form {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 2fr 2fr;
+        gap: 60px;
+    }
+}
+
+@media(max-width:1200px) {
+    .checkout-container {
+        padding: 150px 70px;
+    }
+}
+
+@media(max-width:900px) {
+    .checkout-container {
+        padding: 100px 50px;
+
+        .ordering-form {
+            grid-template-columns: 1fr;
+        }
+    }
 }

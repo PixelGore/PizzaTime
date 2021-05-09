@@ -61,14 +61,16 @@ export const Cart: FC<CartType> = ({ cartItems, isActive, setisOpenCart }) => {
             <div className="cart-description">
                 <h5>FREE DOMESTIC SHIPPING OVER $75</h5>
             </div>
-            <div className="cart-checkout">
-                <NavLink to="/checkout">
-                    <div className="cart-button">
-                        <span>Check out</span>
-                        <span className="material-icons">trending_flat</span>
-                    </div>
-                </NavLink>
-            </div>
+            {cartItems.length === 0 ? null :
+                <div className="cart-checkout">
+                    <NavLink to="/checkout">
+                        <div className="cart-button">
+                            <span>Check out</span>
+                            <span className="material-icons">trending_flat</span>
+                        </div>
+                    </NavLink>
+                </div>
+            }
         </div>
     )
 }

@@ -69,6 +69,7 @@
     .cart-Items {
         max-height: 280px;
         overflow-y: scroll;
+        overflow-x: hidden;
 
         .cart-item {
             display: flex;
