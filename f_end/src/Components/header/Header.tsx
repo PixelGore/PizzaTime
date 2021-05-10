@@ -5,12 +5,14 @@ import { useState } from "react";
 import { Menu } from "./menu/Menu";
 import { Cart } from "./cart/Cart";
 import { useSelector } from "react-redux";
-import { getCart } from "../../Redux/Selectors/cartSelector";
+import { getCart, getCartCount, getSubTotal } from "../../Redux/Selectors/cartSelector";
 
 export const Header: React.FC = () => {
   const [isOpenBrg, setisOpenBrg] = useState(false);
   const [isOpenCart, setisOpenCart] = useState(false)
   let cartItems = useSelector(getCart)
+  let cartCount = useSelector(getCartCount)
+  let subTotal = useSelector(getSubTotal)
 
   return (
     <>
@@ -82,7 +84,7 @@ export const Header: React.FC = () => {
                   </NavLink>
                 </div>
                 <div className="header__cart" onClick={() => { setisOpenCart(!isOpenCart); setisOpenBrg(false) }}>
-                  <span className="cart-text" data-before={cartItems.reduce((items, product) => items + product.quantity, 0)}>
+                  <span className="cart-text" data-before={cartCount}>
                     <span className="material-icons">shopping_cart</span>
                   </span>
                 </div>
@@ -91,7 +93,7 @@ export const Header: React.FC = () => {
           </div>
         </header>
         <Menu isActive={isOpenBrg} setIsActive={setisOpenBrg} />
-        <Cart cartItems={cartItems} isActive={isOpenCart} setisOpenCart={setisOpenCart} />
+        <Cart cartItems={cartItems} isActive={isOpenCart} setisOpenCart={setisOpenCart} subTotal={subTotal} />
       </div>
     </>
   );

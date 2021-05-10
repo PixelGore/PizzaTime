@@ -1,20 +1,20 @@
 import { Dispatch, FC, SetStateAction } from "react"
 import { useDispatch } from "react-redux"
 import { NavLink } from "react-router-dom"
-import { actions } from "../../../Redux/Reducers/cartReducer"
+import { AddToCart, RemoveFromCart } from "../../../Redux/Reducers/cartReducer"
 import { ProductsType } from "../../../types/types"
 import "./Cart.scss"
 import { CartItem } from "./CartItem/CartItem"
 
-export const Cart: FC<CartType> = ({ cartItems, isActive, setisOpenCart }) => {
+export const Cart: FC<CartType> = ({ cartItems, isActive, setisOpenCart, subTotal }) => {
 
     const dispatch = useDispatch()
 
     let handlequantity = (product: ProductsType) => {
-        dispatch(actions.setCartAC(product))
+        dispatch(AddToCart(product))
     }
     let rmItem = (product: ProductsType,) => {
-        dispatch(actions.RMCartAC(product))
+        dispatch(RemoveFromCart(product))
     }
 
     return (
@@ -55,11 +55,11 @@ export const Cart: FC<CartType> = ({ cartItems, isActive, setisOpenCart }) => {
             <div className="cart-total">
                 <span className="text">Subtotal</span>
                 <span className="price">
-                    ${cartItems.reduce((total, product) => total + product.price * product.quantity, 0).toFixed(2)}
+                    ${subTotal}
                 </span>
             </div>
             <div className="cart-description">
-                <h5>FREE DOMESTIC SHIPPING OVER $75</h5>
+                <h5>FREE DOMESTIC SHIPPING OVER $50</h5>
             </div>
             {cartItems.length === 0 ? null :
                 <div className="cart-checkout">
@@ -76,6 +76,7 @@ export const Cart: FC<CartType> = ({ cartItems, isActive, setisOpenCart }) => {
 }
 type CartType = {
     cartItems: ProductsType[],
+    subTotal: number,
     isActive: boolean,
     setisOpenCart: Dispatch<SetStateAction<boolean>>
 }

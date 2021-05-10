@@ -3,8 +3,8 @@ import { ProductsType } from '../../../types/types'
 import './Cart.scss'
 import { Product } from './CartItem/Product'
 
-export const Cart: FC<propsType> = ({ cartItems }) => {
-    let cartTotal = cartItems.reduce((total, product) => total + product.price * product.quantity, 0).toFixed(2)
+export const Cart: FC<propsType> = ({ cartItems, cartTotal, grandTotal, shippingPrice }) => {
+
     return (
         <div className="shopping-cart">
             <div className="cart">
@@ -18,16 +18,16 @@ export const Cart: FC<propsType> = ({ cartItems }) => {
             <div className="totals">
                 <div className="totals-item">
                     <label>Subtotal:</label>
-                    <div>${+cartTotal}</div>
+                    <div>${cartTotal}</div>
                 </div>
                 <div className="totals-item">
                     <label>Shipping:</label>
-                    <div>$2.00</div>
+                    <div>${shippingPrice}</div>
                 </div>
                 <hr />
                 <div className="totals-item">
                     <label>Grand Total:</label>
-                    <div>${(+cartTotal + 2).toFixed(2)}</div>
+                    <div>${grandTotal}</div>
                 </div>
             </div>
 
@@ -35,5 +35,8 @@ export const Cart: FC<propsType> = ({ cartItems }) => {
     )
 }
 type propsType = {
-    cartItems: ProductsType[]
+    cartItems: ProductsType[],
+    cartTotal: number,
+    grandTotal: number,
+    shippingPrice: string
 }

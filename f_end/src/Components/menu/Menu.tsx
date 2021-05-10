@@ -1,6 +1,6 @@
 import { FC, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { actions } from "../../Redux/Reducers/cartReducer";
+import { AddToCart } from "../../Redux/Reducers/cartReducer";
 import { requestMenu } from "../../Redux/Reducers/menuReducer";
 import { getIsFetching, getMenu } from "../../Redux/Selectors/menuSelector";
 import { ProductsType } from "../../types/types";
@@ -20,7 +20,7 @@ export const Menu: FC = () => {
     }, [dispatch])
 
     let handleAddToCart = (product: ProductsType) => {
-        dispatch(actions.setCartAC(product))
+        dispatch(AddToCart(product))
     }
 
     return (
