@@ -21,11 +21,11 @@ let initialState = {
     cartCount: 0,
     shippingPrice: 2,
 }
-type InitialStateType = typeof initialState
+export type InitialStorageStateType = typeof initialState
 
 
 //Reducer
-const cartReducer = (state = initialState, action: ActionTypes): InitialStateType => {
+const cartReducer = (state = initialState, action: ActionTypes): InitialStorageStateType => {
     switch (action.type) {
         case "CART/SET_CART_ITEM":
             const item = action.payload;
