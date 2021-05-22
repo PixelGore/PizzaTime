@@ -3,7 +3,7 @@ import './Contacts.scss'
 
 export const Contacts: FC = () => {
     return (
-        <div className="content">
+        <div className="contacts-container">
             <h1 className="contacts-page__title">Contacts</h1>
 
             <div className="main-contacts">

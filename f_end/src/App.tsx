@@ -9,6 +9,7 @@ import store from "./Redux/reduxStore";
 import { Checkout } from "./Components/checkout/Checkout";
 import { lazy } from "react";
 import { withSuspense } from "./HOC/withSuspense";
+import { Auth } from "./Components/auth/Auth";
 
 //React.lazy
 const About = lazy(() => import('./Components/about/About'));
@@ -25,6 +26,7 @@ function App() {
           <Route path="/contacts" render={() => <Contacts />} />
           <Route path="/menu" render={() => <Menu />} />
           <Route path="/checkout" render={() => <Checkout />} />
+          <Route path="/login" render={() => <Auth />} />
           <Redirect from="/" to="/home" />
         </Switch>
 
