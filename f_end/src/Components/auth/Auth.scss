@@ -268,11 +268,11 @@
 
 }
 
-@media (max-width: 767px) {
-    .auth-container {
-        margin-top: 70px;
-        padding: 50px 0%;
 
+@media (max-width:767px) {
+    .auth-container {
+        max-height: 820px;
+        padding: 80px 0 0 0;
 
         &::before {
             width: 1500px;
@@ -287,31 +287,29 @@
         }
 
         &.active {
-            max-height: 700px;
-            padding: 80px 0 0 0;
 
             &::before {
                 transform: translate(-50%, 100%);
                 bottom: 32%;
                 right: initial;
             }
+            .forms-container {
+                transform: translateY(-40px);
+            }
 
             .panels-container {
-                flex-direction: column;
-
-                .image {
-                    width: 200px;
-                    transition: transform 0.9s ease-in-out;
-                    transition-delay: 0.6s;
-                }
-
                 .panel {
+                    justify-content: inherit;
                     &.right-panel {
                         padding: 0;
 
                         .content {
-                            transform: translateY(90px);
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: center;
                             margin: 0 10%;
+                            transform: translateY(30px);
                         }
 
                         .image {
@@ -319,21 +317,12 @@
                         }
 
                     }
-
-                    &.left-panel {
-
-                        .image,
-                        .content {
-                            transform: translateX(-800px);
-                        }
-                    }
-
                 }
             }
         }
 
         .forms-container {
-            transform: translateY(-80px);
+            transform: translateY(-220px);
             flex-direction: column;
             position: relative;
             z-index: 3;
@@ -351,6 +340,7 @@
 
         .panels-container {
             flex-direction: column;
+            justify-content: space-between;
 
             .image {
                 width: 200px;
@@ -359,11 +349,12 @@
             }
 
             .panel {
+                height: 250px;
 
                 .content {
                     padding-right: 15%;
-                    transition: transform 0.9s ease-in-out;
-                    transition-delay: 0.8s;
+                    transition: transform .9s ease-in-out;
+                    transition-delay: .6s;
 
                     h3 {
                         font-size: 1.2rem;
@@ -375,35 +366,36 @@
                     }
                 }
 
+                &.left-panel {
+                    padding: 0;
+                    .content {
+                        transform: translateY(50px);
+                    }
+                }
+
                 .btn.transparent {
                     width: 110px;
                     height: 35px;
                     font-size: 0.7rem;
                 }
-
             }
         }
+
     }
 }
 
 @media (max-width: 580px) {
     .auth-container {
-        margin-top: 50px;
-        padding: 0px 0%;
+        // margin-top: 50px;
+        // padding: 0px 0%;
 
         &::before {
             bottom: 72%;
             left: 50%;
         }
 
-        &.active {
-            .forms-container {
-                transform: translateY(-50px);
-            }
-        }
-
         .forms-container {
-            transform: translateY(-160px);
+            transform: translateY(-260px);
             transition: transform 0.9s ease-in-out;
         }
 
@@ -414,12 +406,10 @@
 
             .panel {
                 &.right-panel {
-                    height: 100%;
                     padding: 0;
 
 
                     .content {
-                        transform: translateY(120px);
                         margin: 0 5%;
                         padding: 0;
 
@@ -436,9 +426,10 @@
                 }
 
                 &.left-panel {
-                    padding: 2rem 0 3rem 0;
+                    
 
                     .content {
+                        transform: translateY(-20px);
                         margin: 0 5%;
                         padding: 0;
 
