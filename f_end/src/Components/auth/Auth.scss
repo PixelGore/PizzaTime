@@ -116,7 +116,7 @@
                     max-width: 380px;
                     width: 100%;
                     background-color: #f0f0f0;
-                    margin: 10px 0;
+                    margin: 15px 0;
                     height: 55px;
                     border-radius: 55px;
                     display: grid;
@@ -146,6 +146,18 @@
                             font-weight: 500;
                         }
                     }
+                    &.error {
+                        border: 1px solid red;
+                    }
+
+                }
+
+                .error {
+                    color: red;
+                    text-align: center;
+                    font-weight: 400;
+                    width: 300px;
+                    height: 100%;
                 }
 
                 .social-text {
@@ -293,6 +305,7 @@
                 bottom: 32%;
                 right: initial;
             }
+
             .forms-container {
                 transform: translateY(-40px);
             }
@@ -300,6 +313,7 @@
             .panels-container {
                 .panel {
                     justify-content: inherit;
+
                     &.right-panel {
                         padding: 0;
 
@@ -368,6 +382,7 @@
 
                 &.left-panel {
                     padding: 0;
+
                     .content {
                         transform: translateY(50px);
                     }
@@ -386,16 +401,14 @@
 
 @media (max-width: 580px) {
     .auth-container {
-        // margin-top: 50px;
-        // padding: 0px 0%;
-
+        max-height: 850px;
         &::before {
-            bottom: 72%;
+            bottom: 75%;
             left: 50%;
         }
 
         .forms-container {
-            transform: translateY(-260px);
+            transform: translateY(-320px);
             transition: transform 0.9s ease-in-out;
         }
 
@@ -426,7 +439,7 @@
                 }
 
                 &.left-panel {
-                    
+
 
                     .content {
                         transform: translateY(-20px);

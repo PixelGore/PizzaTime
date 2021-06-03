@@ -2,33 +2,47 @@ import {
     Formik,
     Form,
     Field,
+    ErrorMessage,
 } from 'formik';
-import { useDispatch } from 'react-redux';
+import * as Yup from 'yup';
+import { useDispatch, useSelector } from 'react-redux';
+import { Redirect } from "react-router-dom";
 import { login } from '../../../Redux/Reducers/authReducer';
+import { getLogError, getAuthMe } from '../../../Redux/Selectors/authSelector';
 
 
-interface LoginFormType {
-    username: string,
-    password: string,
-}
 
+// Login Component
 export const Login = () => {
-    const initialValues: LoginFormType = { username: '', password: '' };
+
     const dispatch = useDispatch()
+    
+    // Local variables
+    const initialValues: LoginFormType = { username: '', password: '' };
+    const LogError = useSelector(getLogError)
+    const Me = useSelector(getAuthMe)
 
-    const submit = (values: LoginFormType, { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void; }) => {
 
-        alert(JSON.stringify(values))
-        dispatch(login(values.username, values.password))
-        setSubmitting(false)
+    // If logged redirect to home
+    if (Me.length > 0) {
+        return <Redirect to={"/home"} />
     }
 
     return (
         <div className="form-container">
             <Formik
                 initialValues={initialValues}
-
-                onSubmit={submit}
+                validationSchema={Yup.object().shape({
+                    username: Yup.string()
+                        .required('Username is Required')
+                        .matches(/^(?!admin\b)/i, 'Nice try !'),
+                    password: Yup.string()
+                        .required('Password is Required')
+                })}
+                onSubmit={(values, actions) => {
+                    dispatch(login(values.username, values.password))
+                    actions.setSubmitting(false)
+                }}
             >
                 <Form className="signin-form">
                     <h2 className="title">Sign in</h2>
@@ -36,11 +50,18 @@ export const Login = () => {
                         <i className="fa fa-user"></i>
                         <Field name="username" placeholder="Username" />
                     </div>
+                    <ErrorMessage name="username" render={error => <div className="error">{error}</div>} />
+
                     <div className="input-field">
                         <i className="fa fa-lock"></i>
                         <Field name="password" type="password" placeholder="Password" />
                     </div>
+                    <ErrorMessage name="password" render={error => <div className="error">{error}</div>} />
+
                     <button type="submit" className="btn solid" >Login</button>
+
+                    {LogError ? <div className="error">{LogError}</div> : null}
+
                     <p className="social-text">Or sign up with social platforms</p>
                     <div className="social-media">
                         <a href="/" className="social-icon">
@@ -62,4 +83,10 @@ export const Login = () => {
 
         </div>
     )
+}
+
+// Types
+interface LoginFormType {
+    username: string,
+    password: string,
 }

@@ -6,6 +6,7 @@ import rocket from "../../assets/common/rocket.svg"
 import play from "../../assets/common/play.svg"
 
 
+
 export const Auth = () => {
 
     const [isActive, setIsActive] = useState(false)
@@ -15,7 +16,7 @@ export const Auth = () => {
 
             <div className="forms-container">
                 <Login />
-                <Registration />
+                <Registration isActive={isActive} setIsActive={setIsActive} />
             </div>
 
             <div className="panels-container">

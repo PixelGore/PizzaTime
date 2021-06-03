@@ -79,6 +79,8 @@ class AuthView(APIView):
             data['username'] = user.username
             token = Token.objects.get(user=user).key
             data['token'] = token
+            return Response(data, status=201)
         else:
             data = serializer.errors
-        return Response(data)
+            return Response(data, status=409)
+        

@@ -6,6 +6,7 @@ import { Menu } from "./menu/Menu";
 import { Cart } from "./cart/Cart";
 import { useSelector } from "react-redux";
 import { getCart, getCartCount, getSubTotal } from "../../Redux/Selectors/cartSelector";
+import { getAuthMe } from "../../Redux/Selectors/authSelector";
 
 export const Header: React.FC = () => {
   const [isOpenBrg, setisOpenBrg] = useState(false);
@@ -13,6 +14,7 @@ export const Header: React.FC = () => {
   let cartItems = useSelector(getCart)
   let cartCount = useSelector(getCartCount)
   let subTotal = useSelector(getSubTotal)
+  const Me = useSelector(getAuthMe)
 
   return (
     <>
@@ -79,7 +81,7 @@ export const Header: React.FC = () => {
                 <div className="header__login">
                   <NavLink to="/login" className="header__login-link">
                     <span className="login-text">
-                      <span className="material-icons">login</span>
+                      <span className="material-icons">{Me.length > 0 ? "account_circle" :  "login"}</span>
                     </span>
                   </NavLink>
                 </div>

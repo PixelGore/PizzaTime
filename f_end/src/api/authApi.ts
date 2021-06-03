@@ -4,15 +4,15 @@ import { instance } from './api';
 
 export const authAPI = {
     Register(username: string, password: string, password2: string) {
-        return instance.post('auth/', { username, password, password2 }).then(res => res.data)
+        return instance.post('auth/', { username, password, password2 })
     },
     Login(username: string, password: string) {
-        return instance.post('login/', { username, password }).then(res => res.data)
+        return instance.post('login/', { username, password })
     },
     Me(token: string) {
-        // axios.defaults.headers.common['Authorization'] = `Token ${token}`
+        // Adding token as header
         instance.interceptors.request.use(function (config) {
-            const token = store.getState().auth.auth;
+            const token = store.getState().auth.token;
             config.headers.Authorization = `Token ${token}`;
 
             return config;
