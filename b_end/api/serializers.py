@@ -21,18 +21,18 @@ class CartSerializer(serializers.ModelSerializer):
         fields = ('product_name', 'quantity', 'price')
 
 
-
 class RegistrationSerializer(serializers.ModelSerializer):
 
-    password2 = serializers.CharField(style={'input_type': 'password'}, write_only=True)
+    password2 = serializers.CharField(
+        style={'input_type': 'password'}, write_only=True)
 
     class Meta:
         model = User
-        fields = ('id', 'username', 'password', 'password2')
+        fields = ('id', 'username', 'phone', 'password', 'password2')
         extra_kwargs = {
             'password': {'write_only': True}
         }
-    
+
     def save(self):
         user = User(
             username=self._validated_data['username']
@@ -41,8 +41,9 @@ class RegistrationSerializer(serializers.ModelSerializer):
         password2 = self.validated_data['password2']
 
         if password != password2:
-            raise serializers.ValidationError({'password': 'Passwords must match.'})
-        
+            raise serializers.ValidationError(
+                {'password': 'Passwords must match!'})
+
         user.set_password(password)
         user.save()
         return user

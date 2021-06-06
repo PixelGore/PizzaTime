@@ -45,13 +45,14 @@ class Product(models.Model):
 
 
 class Order (models.Model):
-    customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True)
+    customer = models.ForeignKey(
+        Customer, on_delete=models.SET_NULL, null=True)
     complete = models.BooleanField(default=False)
     date_ordered = models.DateTimeField(auto_now_add=True)
     transaction_id = models.CharField(max_length=100)
 
     def __str__(self):
-        return str(self.id)
+        return str(self.customer) + " " + str(self.date_ordered)
 
 
 class OrderItem(models.Model):
@@ -59,6 +60,9 @@ class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=0)
     date_added = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.product
 
     @property
     def get_total(self):
@@ -76,6 +80,7 @@ class ShippingAddress(models.Model):
 
     def __str__(self):
         return self.address
+
 
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)
 def create_aut_token(sender, instance=None, created=False, **kwargs):
