@@ -62,17 +62,18 @@ class AuthView(APIView):
 
         if serializer.is_valid():
             user = serializer.save()
+            token = Token.objects.get(user=user).key
+            phone = request.data['phoneNumber']
             data['response'] = "successfully registered a new user"
             data['username'] = user.username
-            token = Token.objects.get(user=user).key
+            data['phoneNumber'] = phone
             data['token'] = token
-            phone = data['phone']
             customer, created = Customer.objects.get_or_create(
-                phone_number=phone
+                phone_number= phone
             )
-            customer.name = data['username']
+            customer.user = user
+            customer.name = user.username
             customer.save()
-
             return Response(data, status=201)
         else:
             data = serializer.errors
