@@ -1,12 +1,11 @@
-import { useState } from 'react';
 import GoogleMapReact from 'google-map-react';
 import "../About.scss";
 import Marker from './Marker/Marker';
 
 const Map = () => {
 
-  const [center, setCenter] = useState({ lat: -37.84759, lng: 145.0005 });
-  const [zoom, setZoom] = useState(17);
+  const center = { lat: -37.84759, lng: 145.0005 }
+  const zoom = 17
   return (
     <div style={{ height: '100vh', width: '100%' }}>
       <GoogleMapReact

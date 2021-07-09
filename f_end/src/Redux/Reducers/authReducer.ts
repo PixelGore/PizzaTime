@@ -9,7 +9,9 @@ export const actions = {
     FetchRegisterErrorAC: (error: string) => ({ type: 'auth/FETCH_REGISTER_ERROR', payload: error } as const),
     FetchRegisterAC: (response: string) => ({ type: 'auth/FETCH_REGISTER', payload: response } as const),
     FetchLogErrorAC: (error: string) => ({ type: 'auth/FETCH_LOGIN_ERROR', payload: error } as const),
-    FetchLoginAC: (response: string) => ({ type: 'auth/FETCH_LOGIN', payload: response } as const)
+    FetchLoginAC: (response: string) => ({ type: 'auth/FETCH_LOGIN', payload: response } as const),
+    IsFetchingLoginAC: (isFetching: boolean) => ({ type: 'auth/IS_FETCHING_LOGIN', payload: isFetching } as const),
+    IsFetchingRegisterAC: (isFetching: boolean) => ({ type: 'auth/IS_FETCHING_REGISTER', payload: isFetching } as const)
 }
 type ActionTypes = InferActionTypes<typeof actions>
 
@@ -21,6 +23,8 @@ let initialState = {
     RegMsg: "",
     RegError: "",
     LogError: "",
+    isFetchingLogin: false,
+    isFetchingRegister: false
 }
 export type InitialStorageStateType = typeof initialState
 
@@ -55,6 +59,16 @@ const authReducer = (state = initialState, action: ActionTypes): InitialStorageS
                 ...state,
                 LogError: action.payload
             }
+        case "auth/IS_FETCHING_LOGIN":
+            return {
+                ...state,
+                isFetchingLogin: action.payload
+            }
+        case "auth/IS_FETCHING_REGISTER":
+            return {
+                ...state,
+                isFetchingRegister: action.payload
+            }
         default:
             return state
     }
@@ -64,25 +78,30 @@ const authReducer = (state = initialState, action: ActionTypes): InitialStorageS
 type DispatchType = Dispatch<ActionTypes>
 type ThunkType = BaseThunkType<ActionTypes>
 
+
 export const login = (username: string, password: string): ThunkType => {
     return async (dispatch: DispatchType) => {
-        let loginData = await authAPI.Login(username, password)
-            .then(res => res.data)
+        dispatch(actions.IsFetchingLoginAC(true))
+        await authAPI.Login(username, password)
+            .then(async res => {
+                let token = Object.values(res.data).toLocaleString()
+                dispatch(actions.getAuthTokenAC(token))
+                let meData = await authAPI.Me(token)
+                dispatch(actions.getAuthMeAC(meData))
+            })
             .catch(err => dispatch(actions.FetchLogErrorAC(err.response.data)))
-        let token = Object.values(loginData).toLocaleString()
-        dispatch(actions.getAuthTokenAC(token))
-        let meData = await authAPI.Me(token)
-        dispatch(actions.getAuthMeAC(meData))
+        dispatch(actions.IsFetchingLoginAC(false))
     }
 }
 
-export const register = (username: string, password: string, password2: string): ThunkType => {
+export const register = (username: string, phoneNumber: string, password: string, password2: string): ThunkType => {
     return async (dispatch: DispatchType) => {
-        await authAPI.Register(username, password, password2)
+        dispatch(actions.IsFetchingRegisterAC(true))
+        await authAPI.Register(username, phoneNumber, password, password2)
             .then(res => dispatch(actions.FetchRegisterAC(res.data)))
             .catch(err => dispatch(actions.FetchRegisterErrorAC(err.response.data)))
+        dispatch(actions.IsFetchingRegisterAC(false))
     }
-
 }
 
 

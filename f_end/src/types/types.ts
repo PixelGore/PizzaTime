@@ -3,6 +3,16 @@ export type UserType = {
     username: string
 }
 
+export interface CheckoutType {
+    form: {
+        name: string;
+        phone: string;
+    }
+    address: string;
+    items: ProductsType[]
+    total: number
+}
+
 export type ProductsType = {
     id: number;
     name: string;

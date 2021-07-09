@@ -52,7 +52,8 @@ class AuthView(APIView):
 
         content = {
             'user': str(request.user),  # `django.contrib.auth.User` instance.
-            'auth': str(request.auth),  # None
+            'phone': str(Customer.objects.get(name=request.user.username).phone_number), #  Phone number based on authenticated user
+            'auth': str(request.auth),  # Auth token
         }
         return Response(content)
 

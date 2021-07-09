@@ -24,7 +24,6 @@ export const Menu: FC = () => {
     }
 
     return (
-        // true ? <PreLoader/> :
         <div className="menu-content">
             {isFetching ? <PreLoader /> :
                 <div className="container">

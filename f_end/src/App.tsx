@@ -20,15 +20,18 @@ function App() {
     <BrowserRouter>
       <Provider store={store}>
         <Header />
-        <Switch>
-          <Route path="/home" render={() => <Main />} />
-          <Route path="/about" render={() => <SuspendedAbout />} />
-          <Route path="/contacts" render={() => <Contacts />} />
-          <Route path="/menu" render={() => <Menu />} />
-          <Route path="/checkout" render={() => <Checkout />} />
-          <Route path="/login" render={() => <Auth />} />
-          <Redirect from="/" to="/home" />
-        </Switch>
+
+        <div className="content">
+          <Switch>
+            <Route path="/home" render={() => <Main />} />
+            <Route path="/about" render={() => <SuspendedAbout />} />
+            <Route path="/contacts" render={() => <Contacts />} />
+            <Route path="/menu" render={() => <Menu />} />
+            <Route path="/checkout" render={() => <Checkout />} />
+            <Route path="/login" render={() => <Auth />} />
+            <Redirect from="/" to="/home" />
+          </Switch>
+        </div>
 
         <Footer />
       </Provider>

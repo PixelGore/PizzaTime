@@ -7,35 +7,38 @@ import {
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { register } from '../../../Redux/Reducers/authReducer';
-import { getRegError, getRegMsg } from '../../../Redux/Selectors/authSelector';
+import { getisFetchingRegister, getRegError, getRegMsg } from '../../../Redux/Selectors/authSelector';
 import { useEffect } from 'react';
+import PreLoader from "../../common/preloader/Preloader";
 
 
 
 // Registration Component
-export const Registration = ({ isActive, setIsActive }: propsType) => {
+export const Registration = ({ setIsActive }: propsType) => {
 
     const dispatch = useDispatch()
 
     // Local variables
-    const initialValues: RegisterFormType = { username: '', password: '', password2: '' };
+    const initialValues: RegisterFormType = { username: '', phoneNumber: '', password: '', password2: '' };
     const RegError = useSelector(getRegError)
     const RegMsg = useSelector(getRegMsg)
+    const isFetching = useSelector(getisFetchingRegister)
 
     // Switch to login if registration is successful
     useEffect(() => {
         if (RegMsg.length > 0) {
-            setIsActive(!isActive)
+            setIsActive(false)
         }
-    }, [RegMsg]);
+    }, [RegMsg, setIsActive]);
 
 
     return (
         <div className="form-container">
+            {isFetching? <PreLoader/> : ''}
             <Formik
                 initialValues={initialValues}
                 onSubmit={(values, actions) => {
-                    dispatch(register(values.username, values.password, values.password2))
+                    dispatch(register(values.username, values.phoneNumber, values.password, values.password2))
                     actions.resetForm()
                     actions.setSubmitting(false)
                 }}
@@ -43,7 +46,11 @@ export const Registration = ({ isActive, setIsActive }: propsType) => {
                     username: Yup.string()
                         .min(3, 'Provided username is too short!')
                         .max(50, 'Provided username is too long!')
-                        .required('Required'),
+                        .required('Username is required'),
+                    phoneNumber: Yup.string()
+                        .matches(/^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/,
+                            'Phone number is not valid')
+                        .required('Phone number is required'),
                     password: Yup.string()
                         .required('Password is required')
                         .min(4, 'Provided password is too short!')
@@ -70,6 +77,12 @@ export const Registration = ({ isActive, setIsActive }: propsType) => {
 
                         </div>
                         <ErrorMessage name="username" render={error => <div className="error">{error}</div>} />
+
+                        <div className={errors.phoneNumber && touched.phoneNumber ? "input-field error" : "input-field"}>
+                            <i className="fa fa-phone "></i>
+                            <Field name="phoneNumber" placeholder="Phone number" />
+                        </div>
+                        <ErrorMessage name="phoneNumber" render={error => <div className="error">{error}</div>} />
 
                         <div className={errors.password && touched.password ? "input-field error" : "input-field"}>
                             <i className="fa fa-lock"></i>
@@ -108,14 +121,13 @@ export const Registration = ({ isActive, setIsActive }: propsType) => {
         </div >
     )
 }
-
 // Types
 interface RegisterFormType {
     username: string,
+    phoneNumber: string,
     password: string,
     password2: string,
 }
 type propsType = {
-    isActive: boolean,
     setIsActive: (isActive: boolean) => void,
 }

@@ -29,8 +29,6 @@ const menuReducer = (state = initialState, action: ActonTypes): InitialStateType
 
         case "menuPage/TOGGLE_IS_FETCHING":
             return { ...state, isFetching: action.isFetching }
-
-
         default:
             return state
     }

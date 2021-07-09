@@ -12,14 +12,14 @@ def requestCart(data):
     cartTotal = 0
 
     # Redefine variables based on request data
-    for i in cart:
-        cartQuantity += cart[i]['quantity']
+    for entry in cart:
+        cartQuantity += int(entry['quantity'])
 
-        product = Product.objects.get(id=i)
-        total = (product.price * cart[i]['quantity'])
+        product = Product.objects.get(id=entry['id'])
+        total = (product.price * entry['quantity'])
 
         cartTotal += total
-        cartQuantity += cart[i]['quantity']
+        cartQuantity += entry['quantity']
 
         item = {
             'product': {
@@ -30,7 +30,7 @@ def requestCart(data):
                 'category': product.category,
                 'imageURL': product.imageURL
             },
-            'quantity': cart[i]['quantity'],
+            'quantity': entry['quantity'],
             'get_total': total,
         }
         items.append(item)
@@ -63,6 +63,7 @@ def loggedOrder(data, customer):
 
 
 def guestOrder(data):
+    print(data)
     name = data['form']['name']
     phone = data['form']['phone']
 

@@ -40,27 +40,27 @@ export const Footer: FC = () => {
           <h4 className="footer-content__extended">Find more on</h4>
           <ul className="socials">
             <li>
-              <a href="#">
+              <a href="/">
                 <i className="fa fa-facebook"></i>{" "}
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="/">
                 <i className="fa fa-twitter"></i>{" "}
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="/">
                 <i className="fa fa-instagram"></i>{" "}
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="/">
                 <i className="fa fa-vk"></i>{" "}
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="/">
                 <i className="fa fa-youtube"></i>{" "}
               </a>
             </li>

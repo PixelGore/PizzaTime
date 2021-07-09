@@ -8,7 +8,11 @@ export const Menu: FC<PropsType> = ({ isActive, setIsActive }) => {
       <div className="blur" />
       <ul className="nav-list">
         <li className="nav-item">
-          <NavLink to="/" className="nav-link">
+          <NavLink
+            to="/home"
+            className="nav-link"
+            activeClassName="isActive"
+            onClick={() => setIsActive(!isActive)}>
             <span className="material-icons">home</span>
             Home
           </NavLink>
@@ -17,6 +21,7 @@ export const Menu: FC<PropsType> = ({ isActive, setIsActive }) => {
           <NavLink
             to="/about"
             className="nav-link"
+            activeClassName="isActive"
             onClick={() => setIsActive(!isActive)}
           >
             <span className="material-icons">groups</span>
@@ -27,6 +32,7 @@ export const Menu: FC<PropsType> = ({ isActive, setIsActive }) => {
           <NavLink
             to="/menu"
             className="nav-link"
+            activeClassName="isActive"
             onClick={() => setIsActive(!isActive)}
           >
             <span className="material-icons">local_dining</span>
@@ -37,6 +43,7 @@ export const Menu: FC<PropsType> = ({ isActive, setIsActive }) => {
           <NavLink
             to="/contacts"
             className="nav-link"
+            activeClassName="isActive"
             onClick={() => setIsActive(!isActive)}
           >
             <span className="material-icons">contacts</span>
@@ -47,6 +54,7 @@ export const Menu: FC<PropsType> = ({ isActive, setIsActive }) => {
           <NavLink
             to="/login"
             className="nav-link"
+            activeClassName="isActive"
             onClick={() => setIsActive(!isActive)}
           >
             <span className="material-icons">login</span>

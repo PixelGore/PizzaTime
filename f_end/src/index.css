@@ -23,6 +23,12 @@ body {
   background-color: #1B1A1B;
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  padding-top: 60px;
+  display: grid;
+  grid-template-areas:
+    "hd"
+    "content"
+    "ft";
 }
 
 img {
@@ -30,13 +36,9 @@ img {
   height: auto;
 }
 
-.container {
-  max-width: 100%;
-  padding: 0 10px;
-  width: 1200px;
-  margin: 0 auto;
+.content {
+  grid-area: content;
 }
-
 
 ::-webkit-scrollbar {
   width: 3px;

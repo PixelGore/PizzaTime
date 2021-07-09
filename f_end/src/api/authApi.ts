@@ -3,8 +3,8 @@ import { instance } from './api';
 
 
 export const authAPI = {
-    Register(username: string, password: string, password2: string) {
-        return instance.post('auth/', { username, password, password2 })
+    Register(username: string, phoneNumber: string, password: string, password2: string) {
+        return instance.post('auth/', { username, phoneNumber, password, password2 })
     },
     Login(username: string, password: string) {
         return instance.post('login/', { username, password })

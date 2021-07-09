@@ -1,11 +1,12 @@
 .preLoader {
     position: fixed;
-    top: 30%;
-    left: 45%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 99;
 }
 
-@media (max-width: 500px) {
-    .preLoader {
-        left: 35%;
-    }
-}
+// @media (max-width: 500px) {
+//     .preLoader {
+//         left: 35%;
+//     }
+// }

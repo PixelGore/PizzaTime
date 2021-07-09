@@ -64,7 +64,7 @@ export const Cart: FC<CartType> = ({ cartItems, isActive, setisOpenCart, subTota
             {cartItems.length === 0 ? null :
                 <div className="cart-checkout">
                     <NavLink to="/checkout">
-                        <div className="cart-button">
+                        <div className="cart-button" onClick={() => setisOpenCart(false)}>
                             <span>Check out</span>
                             <span className="material-icons">trending_flat</span>
                         </div>

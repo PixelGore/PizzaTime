@@ -46,7 +46,7 @@ class Product(models.Model):
 
 class Order (models.Model):
     customer = models.ForeignKey(
-        Customer, on_delete=models.SET_NULL, null=True)
+        Customer, on_delete=models.CASCADE, default=1)
     complete = models.BooleanField(default=False)
     date_ordered = models.DateTimeField(auto_now_add=True)
     transaction_id = models.CharField(max_length=100)
@@ -62,7 +62,7 @@ class OrderItem(models.Model):
     date_added = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.product
+        return str(self.order)
 
     @property
     def get_total(self):

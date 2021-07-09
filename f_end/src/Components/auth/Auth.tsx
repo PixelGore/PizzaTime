@@ -12,11 +12,11 @@ export const Auth = () => {
     const [isActive, setIsActive] = useState(false)
 
     return (
-        <div className={isActive ? "auth-container" : "auth-container active"}>
+        <div className={isActive ? "auth-container active" : "auth-container"}>
 
             <div className="forms-container">
                 <Login />
-                <Registration isActive={isActive} setIsActive={setIsActive} />
+                <Registration setIsActive={setIsActive} />
             </div>
 
             <div className="panels-container">

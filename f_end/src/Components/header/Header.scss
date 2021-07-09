@@ -4,6 +4,7 @@
     left: 0;
     z-index: 99;
     width: 100%;
+    grid-area: hd;
 
 
     .header {
@@ -11,6 +12,13 @@
         width: 100%;
         top: 0;
         left: 0;
+
+        .container {
+            max-width: 100%;
+            padding: 0 10px;
+            width: 1200px;
+            margin: 0 auto;
+        }
     }
 
     .header::before {

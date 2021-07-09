@@ -1,9 +1,10 @@
 .mobile-menu {
     display: none;
 }
+
 @media (max-width:767px) {
     .mobile-menu {
-        width: 300px;
+        width: 280px;
         height: 100%;
         background-color: #262626;
         position: fixed;
@@ -12,11 +13,13 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        border-radius: 0 20% 60% 0;
-        transition: left .8s ease-out;
+        border-radius: 0 5% 100% 0;
+        transition: all 1s ease-in-out;
+        margin-left: -55px;
 
         &.active {
             left: 0;
+            border-radius: 0 100% 30% 0;
         }
 
         .nav-item {
@@ -51,13 +54,17 @@
                 }
 
                 &::before {
-                    top: 0;
+                    top: -5px;
                     transform-origin: left;
                 }
 
-                &:hover::before,
-                &:hover::after {
-                    transform: scaleX(1);
+                &.isActive {
+
+                    &::before,
+                    &::after {
+                        transform: scaleX(1);
+                    }
+
                 }
             }
         }

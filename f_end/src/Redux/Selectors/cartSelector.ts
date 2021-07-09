@@ -19,3 +19,7 @@ export const getGrandTotal = (state: AppStateType) => {
 export const getShippingPrice = (state: AppStateType) => {
     return state.cart.shippingPrice
 }
+
+export const getisFetching = (state: AppStateType) => {
+    return state.cart.isFetching
+}
