@@ -1,13 +1,11 @@
 .menu-content {
-    padding: 20px 0;
-    width: 100%;
+    padding: 50px 0;
+    margin: 0 20vw;
     .menu-category {
         width: 100%;
         display: flex;
         justify-content: space-between;
         align-items: flex-end;
-
-
         .category__title {
             font-family: 'Montserrat', sans-serif;
             text-transform: uppercase;
@@ -32,7 +30,9 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
     justify-self: center;
     column-gap: 3em;
+    row-gap: 1em;
     color: #fff;
+    margin-left: 3vw;
 
     .menu-item {
         padding: 10px;
@@ -90,8 +90,13 @@
 }
 @media (max-width:800px) {
     .menu-items {
+        margin: 0;
+        margin-left: 0;
         column-gap: 1em;
         grid-template-columns: 1fr 1fr 1fr;
+    }
+    .menu-content {
+        margin: 0 5vw;
     }
 }
 

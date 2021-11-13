@@ -14,7 +14,7 @@ import PreLoader from "../../common/preloader/Preloader";
 
 
 // Registration Component
-export const Registration = ({ setIsActive }: propsType) => {
+export const Registration = ({ setIsActive, active }: propsType) => {
 
     const dispatch = useDispatch()
 
@@ -27,14 +27,15 @@ export const Registration = ({ setIsActive }: propsType) => {
     // Switch to login if registration is successful
     useEffect(() => {
         if (RegMsg.length > 0) {
-            setIsActive(false)
+            setIsActive(!active)
         }
+        // eslint-disable-next-line
     }, [RegMsg, setIsActive]);
 
 
     return (
         <div className="form-container">
-            {isFetching? <PreLoader/> : ''}
+            {isFetching ? <PreLoader /> : ''}
             <Formik
                 initialValues={initialValues}
                 onSubmit={(values, actions) => {
@@ -130,4 +131,5 @@ interface RegisterFormType {
 }
 type propsType = {
     setIsActive: (isActive: boolean) => void,
+    active: boolean
 }

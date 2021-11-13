@@ -16,7 +16,7 @@ export const Auth = () => {
 
             <div className="forms-container">
                 <Login />
-                <Registration setIsActive={setIsActive} />
+                <Registration setIsActive={setIsActive} active={isActive} />
             </div>
 
             <div className="panels-container">

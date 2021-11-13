@@ -1,12 +1,13 @@
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import { ProductsType } from '../../../types/types'
 import '../Menu.scss'
 
 export const Product: FC<PropsType> = ({ product, addToCart }) => {
-    product.quantity = 0;
+    const [quantity, setquantity] = useState(1)
     
     let handleClick = () => {
-        product.quantity++
+        setquantity(quantity+1)
+        product.quantity = quantity
         addToCart(product)
     }
 

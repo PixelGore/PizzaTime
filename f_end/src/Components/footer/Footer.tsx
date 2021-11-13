@@ -68,7 +68,7 @@ export const Footer: FC = () => {
         </div>
       </div>
       <div className="footer-end">
-        <p>copyright &copy;2021 PizzaTime.</p>
+        <p>copyright &copy;2021 | PizzaTime.</p>
       </div>
     </footer>
   );

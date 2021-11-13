@@ -23,6 +23,8 @@
             width: 70%;
             color: #fff;
             text-align: center;
+            margin-left: 10vw;
+            margin-right: 5vw;
 
             .about-section__title {
                 color: #FFA650;
@@ -52,10 +54,11 @@
         background-size: cover;
 
         .map-section {
+            margin-left: 10vw;
+            margin-right: 5vw;
             display: flex;
             justify-items: center;
             align-items: center;
-            margin: 50px;
 
             .map {
                 width: 700px;
@@ -132,6 +135,9 @@
 
             .about-section__main {
                 width: 100%;
+                margin-left: 0;
+                margin-right: 0;
+                padding-top: 10px;
             }
         }
 

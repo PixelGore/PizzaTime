@@ -22,6 +22,9 @@ export const Menu: FC = () => {
     let handleAddToCart = (product: ProductsType) => {
         dispatch(AddToCart(product))
     }
+    // for (const item of menu) {
+    //     console.log(menu.filter(product => item.category_name === product.category_name));
+    //   }
 
     return (
         <div className="menu-content">

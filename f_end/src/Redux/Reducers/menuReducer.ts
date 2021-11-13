@@ -13,7 +13,7 @@ type ActonTypes = InferActionTypes<typeof actions>
 
 let initialState = {
     products: [] as ProductsType[],
-    isFetching: true,
+    isFetching: false,
 }
 type InitialStateType = typeof initialState
 
@@ -40,6 +40,7 @@ type ThunkType = BaseThunkType<ActonTypes>
 
 export const requestMenu = (): ThunkType => {
     return async (dispatch: DispatchType) => {
+        dispatch(actions.toggleIsFetchingAC(true))
         let data = await menuAPI.getMenu()
         dispatch(actions.setMenuAC(data))
         dispatch(actions.toggleIsFetchingAC(false))

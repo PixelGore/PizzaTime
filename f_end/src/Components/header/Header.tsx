@@ -21,7 +21,7 @@ export const Header: React.FC = () => {
       <header className="header">
         <div className="container">
           <div className="header__body">
-            <NavLink to="/" className="header__logo">
+            <NavLink to="/" className="header__logo" onClick={() => { setisOpenBrg(false); setisOpenCart(false) }}>
               <img src={logo} alt="Header__logo" />
             </NavLink>
             {/* Burger */}
@@ -42,6 +42,7 @@ export const Header: React.FC = () => {
                     to="/home"
                     className="header__link"
                     activeClassName="isActive"
+                    onClick={() => { setisOpenBrg(false); setisOpenCart(false) }}
                   >
                     <span className="header__link-text">Home</span>
                   </NavLink>
@@ -51,6 +52,7 @@ export const Header: React.FC = () => {
                     to="/about"
                     className="header__link"
                     activeClassName="isActive"
+                    onClick={() => { setisOpenBrg(false); setisOpenCart(false) }}
                   >
                     <span className="header__link-text">About us</span>
                   </NavLink>
@@ -60,6 +62,7 @@ export const Header: React.FC = () => {
                     to="/menu"
                     className="header__link"
                     activeClassName="isActive"
+                    onClick={() => { setisOpenBrg(false); setisOpenCart(false) }}
                   >
                     <span className="header__link-text">Menu</span>
                   </NavLink>
@@ -69,6 +72,7 @@ export const Header: React.FC = () => {
                     to="/contacts"
                     className="header__link"
                     activeClassName="isActive"
+                    onClick={() => { setisOpenBrg(false); setisOpenCart(false) }}
                   >
                     <span className="header__link-text">Contacts</span>
                   </NavLink>
@@ -78,7 +82,11 @@ export const Header: React.FC = () => {
             {/* End Menu */}
             <div className="header__end">
               <div className="header__login">
-                <NavLink to="/login" className="header__login-link">
+                <NavLink
+                  to="/login"
+                  className="header__login-link"
+                  onClick={() => { setisOpenBrg(false); setisOpenCart(false) }}
+                >
                   <span className="login-text">
                     <span className="material-icons">{Me.length > 0 ? "account_circle" : "login"}</span>
                   </span>

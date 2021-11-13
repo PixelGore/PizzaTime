@@ -7,7 +7,7 @@ const Map = () => {
   const center = { lat: -37.84759, lng: 145.0005 }
   const zoom = 17
   return (
-    <div style={{ height: '100vh', width: '100%' }}>
+    <div style={{ height: '50vh', width: '100%' }}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: "AIzaSyCn3HGIGCFqu7d40xXSImH4jdi1G3DD23g" }}
         defaultCenter={center}

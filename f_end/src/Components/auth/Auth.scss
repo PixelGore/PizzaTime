@@ -1,4 +1,5 @@
 div.auth-container {
+    padding-top: 100px;
     width: 100%;
     height: 100vh;
     position: relative;
@@ -68,7 +69,7 @@ div.auth-container {
 
                     .image,
                     .content {
-                        transform: translateX(-1000px);
+                        transform: translateX(-3000px);
                     }
                 }
 
@@ -138,6 +139,7 @@ div.auth-container {
                         font-weight: 600;
                         font-size: 1.1rem;
                         color: #333;
+                        border-radius: 55px;
 
                         &::placeholder {
                             color: #aaa;
@@ -272,7 +274,7 @@ div.auth-container {
 
                 img.image,
                 div.content {
-                    transform: translateX(1000px);
+                    transform: translateX(3000px);
                 }
             }
         }

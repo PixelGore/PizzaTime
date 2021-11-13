@@ -16,12 +16,17 @@ export const CartItem: FC<cartItemType> = ({ product, handlequantity, rmItem }) 
         rmItem(product)
     }
 
+    const shortDesc = (str:string) => {
+            return str.slice(0, 50) + (str.length > 50 ? "..." : "");
+
+    }
+
     return (
         <div className="cart-item">
             <img src={`http://127.0.0.1:8000${product.image}`} alt="product" />
             <div className="cart-item__info">
                 <h3 className="item__title">{product.name}</h3>
-                <h5 className="item__description">{product.description}</h5>
+                <h5 className="item__description">{shortDesc(product.description)}</h5>
                 <div className="item__pricing">
                     <span className="quantity">
                         <button className="btn" disabled={product.quantity <= 1} onClick={() => handleReduce()}>

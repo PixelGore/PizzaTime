@@ -1,7 +1,7 @@
 import { FC } from "react"
 import './Contacts.scss'
 
-export const Contacts: FC = () => {
+const Contacts: FC = () => {
     return (
         <div className="contacts-container">
             <h1 className="contacts-page__title">Contacts</h1>
@@ -72,3 +72,4 @@ export const Contacts: FC = () => {
         </div>
     )
 }
+export default Contacts
