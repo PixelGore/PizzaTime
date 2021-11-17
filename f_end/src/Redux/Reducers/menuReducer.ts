@@ -1,18 +1,18 @@
 import { menuAPI } from './../../api/menuAPI';
 import { InferActionTypes, BaseThunkType } from './../reduxStore';
-import { ProductsType } from './../../types/types';
+import { MenuType } from './../../types/types';
 import { Dispatch } from 'redux';
 
 
 // ActionCreators
 export const actions = {
-    setMenuAC: (products: ProductsType[]) => ({ type: 'menuPage/SET_MENU', products } as const),
+    setMenuAC: (products: MenuType[]) => ({ type: 'menuPage/SET_MENU', products } as const),
     toggleIsFetchingAC: (isFetching: boolean) => ({ type: 'menuPage/TOGGLE_IS_FETCHING', isFetching } as const),
 }
 type ActonTypes = InferActionTypes<typeof actions>
 
 let initialState = {
-    products: [] as ProductsType[],
+    menu: [] as MenuType[],
     isFetching: false,
 }
 type InitialStateType = typeof initialState
@@ -24,7 +24,7 @@ const menuReducer = (state = initialState, action: ActonTypes): InitialStateType
         case "menuPage/SET_MENU":
             return {
                 ...state,
-                products: action.products
+                menu: action.products
             }
 
         case "menuPage/TOGGLE_IS_FETCHING":

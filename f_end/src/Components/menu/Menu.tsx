@@ -3,50 +3,48 @@ import { useDispatch, useSelector } from "react-redux";
 import { AddToCart } from "../../Redux/Reducers/cartReducer";
 import { requestMenu } from "../../Redux/Reducers/menuReducer";
 import { getIsFetching, getMenu } from "../../Redux/Selectors/menuSelector";
-import { ProductsType } from "../../types/types";
+import { MenuType, ProductsType } from "../../types/types";
 import PreLoader from "../common/preloader/Preloader";
 import './Menu.scss'
 import { Product } from "./Product/Product";
 
 export const Menu: FC = () => {
 
-    const menu = useSelector(getMenu)
-    const isFetching = useSelector(getIsFetching)
+	const menu: MenuType[] = useSelector(getMenu)
+	const isFetching: boolean = useSelector(getIsFetching)
 
-    const dispatch = useDispatch()
+	const dispatch = useDispatch()
 
-    useEffect(() => {
-        dispatch(requestMenu())
-    }, [dispatch])
+	useEffect(() => {
+		dispatch(requestMenu())
+	}, [dispatch])
 
-    let handleAddToCart = (product: ProductsType) => {
-        dispatch(AddToCart(product))
-    }
-    // for (const item of menu) {
-    //     console.log(menu.filter(product => item.category_name === product.category_name));
-    //   }
+	let handleAddToCart = (product: ProductsType) => {
+		dispatch(AddToCart(product))
+	}
 
-    return (
-        <div className="menu-content">
-            {isFetching ? <PreLoader /> :
-                <div className="container">
-                    <div className="menu">
-
-                        <div className="menu-category">
-                            <span className="category__title">Pizza</span>
-                            <a href="/" className="menu-category__link">Go to Pizzas</a>
-                        </div>
-                        <hr />
-
-                        <div className="menu-items">
-                            {menu.map(product =>
-                                <Product key={product.id} product={product} addToCart={handleAddToCart} />
-                            )}
-                        </div>
-
-                    </div>
-                </div>
-            }
-        </div>
-    )
+	return (
+		<div className="menu-content">
+			{isFetching ? <PreLoader /> :
+				<div className="container">
+					<div className="menu">
+						{menu.map(item => (
+							<div>
+								<div className="menu-category">
+									<span className="category__title">{item.name}</span>
+									<a href="/" className="menu-category__link">Go to {item.name}</a>
+								</div>
+								<hr />
+								<div className="menu-items">
+									{item.products.map(product => (
+										<Product key={product.id} product={product} addToCart={handleAddToCart} />
+									))}
+								</div>
+							</div>
+						))}
+					</div>n
+				</div>
+			}
+		</div>
+	)
 }

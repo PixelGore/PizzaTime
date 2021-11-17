@@ -22,3 +22,9 @@ export type ProductsType = {
     image: string | null;
     quantity: number;
 }
+
+export type MenuType = {
+    id:number;
+    name:string;
+    products: ProductsType[]
+}
