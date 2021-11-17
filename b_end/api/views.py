@@ -2,21 +2,23 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 import json
 from datetime import datetime
+from collections import defaultdict
+from django.core.serializers import serialize
 
 # Create your views here.
 from .models import *
-from .serializers import ProductSerializer, RegistrationSerializer
+from .serializers import RegistrationSerializer, ProductSerializer, MenuSerializer
 from .utils import loggedOrder, guestOrder, get_cart_total
 
 
 class ProductListView(APIView):
 
     def get(self, request):
-        products = Product.objects.all()
-        serializer = ProductSerializer(products, many=True)
-
+        menu = defaultdict(list)
+        for product in Product.objects.all():
+            menu[product.category].append(product)
+        serializer = MenuSerializer(menu, many=True)
         return Response(serializer.data)
-
 
 class CartView(APIView):
 
@@ -52,7 +54,8 @@ class AuthView(APIView):
 
         content = {
             'user': str(request.user),  # `django.contrib.auth.User` instance.
-            'phone': str(Customer.objects.get(name=request.user.username).phone_number), #  Phone number based on authenticated user
+            # Phone number based on authenticated user
+            'phone': str(Customer.objects.get(name=request.user.username).phone_number),
             'auth': str(request.auth),  # Auth token
         }
         return Response(content)
@@ -70,7 +73,7 @@ class AuthView(APIView):
             data['phoneNumber'] = phone
             data['token'] = token
             customer, created = Customer.objects.get_or_create(
-                phone_number= phone
+                phone_number=phone
             )
             customer.user = user
             customer.name = user.username

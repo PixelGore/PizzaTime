@@ -4,12 +4,18 @@ from .models import *
 
 
 class ProductSerializer(serializers.ModelSerializer):
-    category_name = serializers.CharField(source='category', read_only=True)
-
     class Meta:
         model = Product
         fields = ('id', 'name', 'description',
-                  'price', 'category_name', 'image')
+                  'price', 'image')
+
+
+class MenuSerializer(serializers.ModelSerializer):
+    products = ProductSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Category
+        fields = ('id', 'name', 'products')
 
 
 class CartSerializer(serializers.ModelSerializer):
