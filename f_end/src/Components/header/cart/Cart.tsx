@@ -13,7 +13,8 @@ export const Cart: FC<CartType> = ({ cartItems, isActive, setisOpenCart, subTota
     let handlequantity = (product: ProductsType) => {
         dispatch(AddToCart(product))
     }
-    let rmItem = (product: ProductsType,) => {
+    let rmItem = (product: ProductsType) => {
+        product.quantity = 0
         dispatch(RemoveFromCart(product))
     }
 

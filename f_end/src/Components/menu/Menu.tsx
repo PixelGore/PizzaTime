@@ -29,7 +29,7 @@ export const Menu: FC = () => {
 				<div className="container">
 					<div className="menu">
 						{menu.map(item => (
-							<div>
+							<div key={item.id}>
 								<div className="menu-category">
 									<span className="category__title">{item.name}</span>
 									<a href="/" className="menu-category__link">Go to {item.name}</a>

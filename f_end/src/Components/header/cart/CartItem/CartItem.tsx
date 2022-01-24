@@ -4,21 +4,18 @@ import { ProductsType } from "../../../../types/types"
 export const CartItem: FC<cartItemType> = ({ product, handlequantity, rmItem }) => {
 
     let handleReduce = () => {
-        product.quantity--
+        product.quantity = product.quantity -2 
         handlequantity(product)
     }
     let handleIncrease = () => {
-        product.quantity++;
         handlequantity(product)
     }
     let handleRemove = () => {
-        product.quantity = 0;
         rmItem(product)
     }
 
     const shortDesc = (str:string) => {
-            return str.slice(0, 50) + (str.length > 50 ? "..." : "");
-
+        return str.slice(0, 50) + (str.length > 50 ? "..." : "");
     }
 
     return (

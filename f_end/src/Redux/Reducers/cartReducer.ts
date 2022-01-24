@@ -36,12 +36,14 @@ const cartReducer = (state = initialState, action: ActionTypes): InitialStorageS
             const existItem = state.cartItems.find(x => x.id === item.id)
 
             if (existItem) {
+                item.quantity++
                 return {
                     ...state,
                     cartItems: state.cartItems.map(stateItem =>
                         stateItem.id === existItem.id ? item : stateItem)
                 }
             } else {
+                item.quantity = 1
                 return {
                     ...state,
                     cartItems: [...state.cartItems, item]
