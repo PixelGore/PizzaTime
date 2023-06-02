@@ -1,7 +1,7 @@
+import { useState } from "react"
 import { Login } from "./Forms/Login"
 import { Registration } from "./Forms/Registration"
 import "./Auth.scss"
-import { useState } from "react"
 import rocket from "../../assets/common/rocket.svg"
 import play from "../../assets/common/play.svg"
 

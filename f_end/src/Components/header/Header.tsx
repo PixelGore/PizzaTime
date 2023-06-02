@@ -1,10 +1,10 @@
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import "./Header.scss";
 import logo from "../../assets/common/logo.svg";
 import { useState } from "react";
 import { Menu } from "./menu/Menu";
 import { Cart } from "./cart/Cart";
-import { useSelector } from "react-redux";
 import {
   getCart,
   getCartCount,

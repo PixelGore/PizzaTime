@@ -1,4 +1,6 @@
+import React from "react";
 import { useSelector } from "react-redux";
+import { Navigate } from "react-router";
 import {
   getCart,
   getGrandTotal,
@@ -9,8 +11,6 @@ import {
 import { Cart } from "./Cart/Cart";
 import "./Checkout.scss";
 import { CheckoutForm } from "./Form/CheckoutForm";
-import React from "react";
-import { Navigate } from "react-router";
 
 export const Checkout = () => {
   let cartItems = useSelector(getCart);

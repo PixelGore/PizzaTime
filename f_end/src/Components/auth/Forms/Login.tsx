@@ -1,3 +1,5 @@
+import React from "react";
+import { Navigate } from "react-router";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,8 +10,6 @@ import {
   getisFetchingLogin,
 } from "../../../Redux/Selectors/authSelector";
 import PreLoader from "../../common/preloader/Preloader";
-import React from "react";
-import {Navigate} from "react-router";
 
 // Login Component
 export const Login = () => {
@@ -79,7 +79,7 @@ export const Login = () => {
               Login
             </button>
 
-            {LogError ? <div className="error">{LogError}</div> : null}
+            {LogError ? <div className="error">LogError</div> : null}
 
             <p className="social-text">Or sign up with social platforms</p>
             <div className="social-media">

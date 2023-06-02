@@ -1,11 +1,11 @@
 import React, { createRef } from "react";
+import { useDispatch } from "react-redux";
 import ReactDOM from "react-dom";
+import { Formik, Field, ErrorMessage, Form } from "formik";
+import * as Yup from "yup";
 import "./CheckoutForm.scss";
 import PreLoader from "../../common/preloader/Preloader";
 import { CheckoutType, ProductsType } from "../../../types/types";
-import { Formik, Field, ErrorMessage, Form } from "formik";
-import * as Yup from "yup";
-import { useDispatch } from "react-redux";
 import { SubmitCart } from "../../../Redux/Reducers/cartReducer";
 
 // Importing PaypalBtn
@@ -84,7 +84,7 @@ export const CheckoutForm: React.FC<propsType> = ({
             .required("Address is required"),
         })}
       >
-        {({ errors, touched }) => (
+        {(params) => (
           <Form>
             <div className="form-group">
               <Field

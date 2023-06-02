@@ -1,13 +1,13 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { useDispatch, useSelector } from "react-redux";
 import { register } from "../../../Redux/Reducers/authReducer";
 import {
   getisFetchingRegister,
   getRegError,
   getRegMsg,
 } from "../../../Redux/Selectors/authSelector";
-import { useEffect } from "react";
 import PreLoader from "../../common/preloader/Preloader";
 
 // Registration Component
@@ -67,7 +67,7 @@ export const Registration = ({ setIsActive, active }: propsType) => {
             .max(20, "Provided password is too long!"),
           password2: Yup.string()
             .when("password", {
-              is: (val: string) => (!!(val && val.length > 0)),
+              is: (val: string) => !!(val && val.length > 0),
               then: Yup.string().oneOf(
                 [Yup.ref("password")],
                 "Both password need to be the same!"
@@ -148,7 +148,7 @@ export const Registration = ({ setIsActive, active }: propsType) => {
               Register
             </button>
 
-            {RegError ? <div className="error">{RegError}</div> : null}
+            {RegError ? <div className="error">RegError</div> : null}
 
             <p className="social-text">Or sign up with social platforms</p>
             <div className="social-media">
