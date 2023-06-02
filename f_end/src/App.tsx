@@ -1,4 +1,5 @@
-import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
+import { Navigate } from "react-router";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Header } from "./Components/header/Header";
 import { Footer } from "./Components/footer/Footer";
 import { Main } from "./Components/main/Main";
@@ -6,15 +7,15 @@ import { Menu } from "./Components/menu/Menu";
 import { Provider } from "react-redux";
 import store from "./Redux/reduxStore";
 import { Checkout } from "./Components/checkout/Checkout";
-import { lazy } from "react";
+import React, { lazy, Suspense } from "react";
 import { withSuspense } from "./HOC/withSuspense";
 import { Auth } from "./Components/auth/Auth";
 
 //React.lazy
-const About = lazy(() => import('./Components/about/About'));
-const SuspendedAbout = withSuspense(About)
-const Contacts = lazy(() => import('./Components/contacts/Contacts'));
-const SuspendedContacts = withSuspense(Contacts)
+const About = lazy(() => import("./Components/about/About"));
+const SuspendedAbout = withSuspense(About);
+const Contacts = lazy(() => import("./Components/contacts/Contacts"));
+const SuspendedContacts = withSuspense(Contacts);
 
 function App() {
   return (
@@ -23,15 +24,17 @@ function App() {
         <Header />
 
         <div className="content">
-          <Switch>
-            <Route path="/home" render={() => <Main />} />
-            <Route path="/about" render={() => <SuspendedAbout />} />
-            <Route path="/contacts" render={() => <SuspendedContacts />} />
-            <Route path="/menu" render={() => <Menu />} />
-            <Route path="/checkout" render={() => <Checkout />} />
-            <Route path="/login" render={() => <Auth />} />
-            <Redirect from="/" to="/home" />
-          </Switch>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Routes>
+              <Route path="/home" element={<Main />} />
+              <Route path="/about" element={<SuspendedAbout />} />
+              <Route path="/contacts" element={<SuspendedContacts />} />
+              <Route path="/menu" element={<Menu />} />
+              <Route path="/checkout" element={<Checkout />} />
+              <Route path="/login" element={<Auth />} />
+              <Route path="/" element={<Navigate to="/home" />} />
+            </Routes>{" "}
+          </Suspense>
         </div>
 
         <Footer />
