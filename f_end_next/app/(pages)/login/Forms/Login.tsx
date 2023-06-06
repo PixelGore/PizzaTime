@@ -1,15 +1,19 @@
 import React from "react";
-import { Navigate } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
+import { redirect } from "next/navigation";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { useDispatch, useSelector } from "react-redux";
-import { login } from "../../../Redux/Reducers/authReducer";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import GoogleIcon from "@mui/icons-material/Google";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+
+import { login } from "@/app/Redux/Reducers/authReducer";
 import {
   getLogError,
   getAuthMe,
   getisFetchingLogin,
-} from "../../../Redux/Selectors/authSelector";
-import PreLoader from "@/app/common/preloader/Preloader";
+} from "@/app/Redux/Selectors/authSelector";
 
 // Login Component
 export const Login = () => {
@@ -19,16 +23,14 @@ export const Login = () => {
   const initialValues: LoginFormType = { username: "", password: "" };
   const LogError = useSelector(getLogError);
   const Me = useSelector(getAuthMe);
-  const isFetching = useSelector(getisFetchingLogin);
 
   // If logged redirect to home
   if (Me.length > 0) {
-    return <Navigate to={"/home"} />;
+    redirect("/home");
   }
 
   return (
     <div className="form-container">
-      {isFetching ? <PreLoader /> : ""}
       <Formik
         initialValues={initialValues}
         validationSchema={Yup.object().shape({
@@ -84,16 +86,16 @@ export const Login = () => {
             <p className="social-text">Or sign up with social platforms</p>
             <div className="social-media">
               <a href="/" className="social-icon">
-                <i className="fa fa-facebook"></i>
+                <FacebookIcon className="fa fa-facebook"></FacebookIcon>
               </a>
               <a href="/" className="social-icon">
-                <i className="fa fa-twitter"></i>
+                <TwitterIcon className="fa fa-twitter"></TwitterIcon>
               </a>
               <a href="/" className="social-icon">
-                <i className="fa fa-google"></i>
+                <GoogleIcon className="fa fa-google"></GoogleIcon>
               </a>
               <a href="/" className="social-icon">
-                <i className="fa fa-linkedin"></i>
+                <LinkedInIcon className="fa fa-linkedin"></LinkedInIcon>
               </a>
             </div>
           </Form>

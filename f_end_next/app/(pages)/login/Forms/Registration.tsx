@@ -2,13 +2,17 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { register } from "../../../Redux/Reducers/authReducer";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import GoogleIcon from "@mui/icons-material/Google";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+
+import { register } from "@/app/Redux/Reducers/authReducer";
 import {
   getisFetchingRegister,
   getRegError,
   getRegMsg,
-} from "../../../Redux/Selectors/authSelector";
-import PreLoader from "@/app/common/preloader/Preloader";
+} from "@/app/Redux/Selectors/authSelector";
 
 // Registration Component
 export const Registration = ({ setIsActive, active }: propsType) => {
@@ -35,7 +39,6 @@ export const Registration = ({ setIsActive, active }: propsType) => {
 
   return (
     <div className="form-container">
-      {isFetching ? <PreLoader /> : ""}
       <Formik
         initialValues={initialValues}
         onSubmit={(values, actions) => {
@@ -153,16 +156,16 @@ export const Registration = ({ setIsActive, active }: propsType) => {
             <p className="social-text">Or sign up with social platforms</p>
             <div className="social-media">
               <a href="/" className="social-icon">
-                <i className="fa fa-facebook"></i>
+                <FacebookIcon className="fa fa-facebook"></FacebookIcon>
               </a>
               <a href="/" className="social-icon">
-                <i className="fa fa-twitter"></i>
+                <TwitterIcon className="fa fa-twitter"></TwitterIcon>
               </a>
               <a href="/" className="social-icon">
-                <i className="fa fa-google"></i>
+                <GoogleIcon className="fa fa-google"></GoogleIcon>
               </a>
               <a href="/" className="social-icon">
-                <i className="fa fa-linkedin"></i>
+                <LinkedInIcon className="fa fa-linkedin"></LinkedInIcon>
               </a>
             </div>
           </Form>
