@@ -1,8 +1,9 @@
-import "./globals.css";
-import { Inter } from "next/font/google";
-import { Header } from "@/app/header/Header";
 import { ReactNode } from "react";
+import { Inter } from "next/font/google";
+import "./globals.css";
+import { Header } from "@/app/header/Header";
 import ReduxProvider from "@/app/providers/ReduxProvider";
+import { Footer } from "@/app/footer/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,6 +19,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <ReduxProvider>
           <Header />
           {children}
+          <Footer />
         </ReduxProvider>
       </body>
     </html>
