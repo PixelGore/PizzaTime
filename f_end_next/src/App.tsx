@@ -14,7 +14,7 @@ import { Auth } from "./Components/auth/Auth";
 //React.lazy
 const About = lazy(() => import("./Components/about/About"));
 const SuspendedAbout = withSuspense(About);
-const Contacts = lazy(() => import("./Components/contacts/Contacts"));
+const Contacts = lazy(() => import("@/app/(pages)/contacts/page"));
 const SuspendedContacts = withSuspense(Contacts);
 
 function App() {

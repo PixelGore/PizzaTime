@@ -148,7 +148,9 @@ export const Registration = ({ setIsActive, active }: propsType) => {
               Register
             </button>
 
-            {RegError ? <div className="error">RegError</div> : null}
+            {RegError ? (
+              <div className="error">An error has occurred.</div>
+            ) : null}
 
             <p className="social-text">Or sign up with social platforms</p>
             <div className="social-media">

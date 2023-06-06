@@ -84,7 +84,7 @@ export const Header = () => {
                   <Link
                     href="/about"
                     className={`${styles.header__link} ${
-                      pathname === "/" ? styles.isActive : ""
+                      pathname === "/about" ? styles.isActive : ""
                     }`}
                     onClick={() => {
                       setIsOpenBrg(false);
@@ -114,7 +114,7 @@ export const Header = () => {
                   <Link
                     href="/contacts"
                     className={`${styles.header__link} ${
-                      pathname === "/" ? styles.isActive : ""
+                      pathname === "/contacts" ? styles.isActive : ""
                     }`}
                     onClick={() => {
                       setIsOpenBrg(false);
