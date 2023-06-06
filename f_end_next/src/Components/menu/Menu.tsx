@@ -4,7 +4,7 @@ import { AddToCart } from "../../Redux/Reducers/cartReducer";
 import { requestMenu } from "../../Redux/Reducers/menuReducer";
 import { getIsFetching, getMenu } from "../../Redux/Selectors/menuSelector";
 import { MenuType, ProductsType } from "../../types/types";
-import PreLoader from "../common/preloader/Preloader";
+import PreLoader from "@/app/common/preloader/Preloader";
 import "./Menu.scss";
 import { Product } from "./Product/Product";
 

@@ -9,7 +9,7 @@ import {
   getAuthMe,
   getisFetchingLogin,
 } from "../../../Redux/Selectors/authSelector";
-import PreLoader from "../../common/preloader/Preloader";
+import PreLoader from "@/app/common/preloader/Preloader";
 
 // Login Component
 export const Login = () => {

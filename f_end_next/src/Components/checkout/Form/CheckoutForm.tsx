@@ -4,7 +4,7 @@ import ReactDOM from "react-dom";
 import { Formik, Field, ErrorMessage, Form } from "formik";
 import * as Yup from "yup";
 import "./CheckoutForm.scss";
-import PreLoader from "../../common/preloader/Preloader";
+import PreLoader from "@/app/common/preloader/Preloader";
 import { CheckoutType, ProductsType } from "../../../types/types";
 import { SubmitCart } from "../../../Redux/Reducers/cartReducer";
 

@@ -1,19 +1,21 @@
-import { FC } from "react";
-import "./About.scss";
-import Map from "./map/GMap";
-import PizzaIcon from "@/app/common/icons/Pizza";
+"use client";
+import StarIcon from "@mui/icons-material/Star";
+import StarHalfIcon from "@mui/icons-material/StarHalf";
 
-const About: FC = () => {
+import PizzaIcon from "@/app/common/icons/Pizza";
+import styles from "./styles.module.scss";
+
+export default function About() {
   return (
-    <div className="about-content">
-      <div className="about-section">
-        <div className="about-section__image">
-          <PizzaIcon className="section-about__logo" />
+    <div className={`${styles["about-content"]}`}>
+      <div className={`${styles["about-section"]}`}>
+        <div className={`${styles["about-section__image"]}`}>
+          <PizzaIcon className={`${styles["section-about__logo"]}`} />
         </div>
 
-        <div className="about-section__main">
-          <h2 className="about-section__title">About us</h2>
-          <p className="about-section__text">
+        <div className={`${styles["about-section__main"]}`}>
+          <h2 className={`${styles["about-section__title"]}`}>About us</h2>
+          <p className={`${styles["about-section__text"]}`}>
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloremque
             accusamus enim minima? Dolore, dignissimos aspernatur necessitatibus
             minus, enim magnam voluptate voluptatem rerum ullam non, aperiam
@@ -51,19 +53,19 @@ const About: FC = () => {
             repudiandae in beatae tempore dolore, quis rem quae ut sint sit,
             provident tenetur?
           </p>
-          <hr />
+          <hr className="mx-auto" />
 
-          <div className="about-section__rating">
-            <span className="material-icons">star</span>
-            <span className="material-icons">star</span>
+          <div className={`${styles["about-section__rating"]}`}>
+            <StarIcon className={`${styles["material-icons"]}`} />
+            <StarIcon className={`${styles["material-icons"]}`} />
 
-            <span className="material-icons">star</span>
+            <StarIcon className={`${styles["material-icons"]}`} />
 
-            <span className="material-icons">star</span>
-            <span className="material-icons">star_half</span>
+            <StarIcon className={`${styles["material-icons"]}`} />
+            <StarHalfIcon className={`${styles["material-icons"]}`} />
           </div>
 
-          <div className="about-section__review">
+          <div className={`${styles["about-section__review"]}`}>
             <h3>"Best pizza in Melbourne"</h3>
             <p>
               A place with great atmosphere and even greater pizza. The pizza
@@ -77,22 +79,24 @@ const About: FC = () => {
           </div>
         </div>
       </div>
-      <div className="about-secondary">
-        <div className="map-section">
-          <div className="map__info">
+      <div className={`${styles["about-secondary"]}`}>
+        <div className={`${styles["map-section"]}`}>
+          <div className={`${styles["map__info"]}`}>
             <h4>Our location</h4>
             <h2>Visit us!</h2>
-            <hr />
+            <hr className="mx-auto" />
             <h4>We are located</h4>
             <p>415 Malvern Road South Yarra, Melbourne</p>
           </div>
 
-          <Map />
+          <div className="text-white flex text-center justify-center items-center bg-gray-400 p-4 w-[400px] h-[400px]">
+            Google Maps with location here
+          </div>
         </div>
-        <div className="contact-section">
+        <div className={`${styles["contact-section"]}`}>
           <h3>Have a question ?</h3>
           <h2>Contact us</h2>
-          <hr />
+          <hr className="mx-auto" />
           <h4>
             call us: <a href="tel:+61888888888">+61 888-888-888</a>
           </h4>
@@ -104,6 +108,4 @@ const About: FC = () => {
       </div>
     </div>
   );
-};
-
-export default About;
+}

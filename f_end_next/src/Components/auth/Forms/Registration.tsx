@@ -8,7 +8,7 @@ import {
   getRegError,
   getRegMsg,
 } from "../../../Redux/Selectors/authSelector";
-import PreLoader from "../../common/preloader/Preloader";
+import PreLoader from "@/app/common/preloader/Preloader";
 
 // Registration Component
 export const Registration = ({ setIsActive, active }: propsType) => {
