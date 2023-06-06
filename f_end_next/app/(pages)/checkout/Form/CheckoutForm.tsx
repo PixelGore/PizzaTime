@@ -1,23 +1,18 @@
 import React, { createRef } from "react";
 import { useDispatch } from "react-redux";
-import ReactDOM from "react-dom";
 import { Formik, Field, ErrorMessage, Form } from "formik";
 import * as Yup from "yup";
+
+import { CheckoutType, ProductsType } from "@/app/types/types";
+import { SubmitCart } from "@/app/Redux/Reducers/cartReducer";
+
 import "./CheckoutForm.scss";
-import PreLoader from "@/app/common/preloader/Preloader";
-import { CheckoutType, ProductsType } from "../../../types/types";
-import { SubmitCart } from "../../../Redux/Reducers/cartReducer";
+import dynamic from "next/dynamic";
+import { PayPalButton } from "react-paypal-button-v2";
 
-// Importing PaypalBtn
-//  @ts-ignore
-const PayPalButton = window.paypal.Buttons.driver("react", { React, ReactDOM });
-
-export const CheckoutForm: React.FC<propsType> = ({
-  items,
-  total,
-  isFetching,
-}) => {
+export const CheckoutForm: React.FC<propsType> = ({ items, total }) => {
   const dispatch = useDispatch();
+
   // Local Values
   const initialValues: CheckoutType = {
     form: { name: "", phone: "" },
@@ -51,7 +46,6 @@ export const CheckoutForm: React.FC<propsType> = ({
 
   return (
     <div className="checkout__form">
-      {isFetching ? <PreLoader /> : ""}
       <Formik
         initialValues={initialValues}
         onSubmit={(values, actions) => {

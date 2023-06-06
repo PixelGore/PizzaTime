@@ -1,6 +1,8 @@
-import React from "react";
+"use client";
+
 import { useSelector } from "react-redux";
-import { Navigate } from "react-router";
+import { redirect } from "next/navigation";
+
 import {
   getCart,
   getGrandTotal,
@@ -12,7 +14,7 @@ import { Cart } from "./Cart/Cart";
 import "./Checkout.scss";
 import { CheckoutForm } from "./Form/CheckoutForm";
 
-export const Checkout = () => {
+export default function Checkout() {
   let cartItems = useSelector(getCart);
   let cartTotal = useSelector(getSubTotal);
   let grandTotal = useSelector(getGrandTotal);
@@ -20,7 +22,7 @@ export const Checkout = () => {
   let shippingPrice = useSelector(getShippingPrice).toFixed(2);
 
   if (cartItems.length <= 0) {
-    return <Navigate to={"/home"} />;
+    redirect("/home");
   }
 
   return (
@@ -41,4 +43,4 @@ export const Checkout = () => {
       </div>
     </div>
   );
-};
+}
