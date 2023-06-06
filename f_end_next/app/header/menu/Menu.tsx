@@ -1,66 +1,85 @@
 import { Dispatch, FC, SetStateAction } from "react";
-import "./Menu.scss";
-import { CustomNavLink } from "../../common/customNavLink/CustomNavLink";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import HomeIcon from "@mui/icons-material/Home";
+import GroupsIcon from "@mui/icons-material/Groups";
+import LocalDiningIcon from "@mui/icons-material/LocalDining";
+import ContactsIcon from "@mui/icons-material/Contacts";
+import LoginIcon from "@mui/icons-material/Login";
+
+import styles from "./menu.module.scss";
 
 export const Menu: FC<PropsType> = ({ isActive, setIsActive }) => {
+  const pathname = usePathname();
   return (
-    <nav className={isActive ? "mobile-menu active" : "mobile-menu"}>
-      <div className="blur" />
-      <ul className="nav-list">
-        <li className="nav-item">
-          <CustomNavLink
-            to="/home"
-            className="nav-link"
-            activeClassName="isActive"
+    <nav
+      className={
+        isActive
+          ? `${styles["mobile-menu"]} ${styles.active}`
+          : `${styles["mobile-menu"]}`
+      }
+    >
+      <div className={styles.blur} />
+      <ul className={styles["nav-list"]}>
+        <li className={styles["nav-item"]}>
+          <Link
+            href="/home"
+            className={`${styles["nav-link"]} ${
+              pathname === "/" ? styles.isActive : ""
+            }`}
             onClick={() => setIsActive(!isActive)}
           >
-            <span className="material-icons">home</span>
+            <HomeIcon className={styles["material-icons"]} />
             Home
-          </CustomNavLink>
+          </Link>
         </li>
-        <li className="nav-item">
-          <CustomNavLink
-            to="/about"
-            className="nav-link"
-            activeClassName="isActive"
+        <li className={styles["nav-item"]}>
+          <Link
+            href="/about"
+            className={`${styles["nav-link"]} ${
+              pathname === "/" ? styles.isActive : ""
+            }`}
             onClick={() => setIsActive(!isActive)}
           >
-            <span className="material-icons">groups</span>
+            <GroupsIcon className={styles["material-icons"]} />
             About us
-          </CustomNavLink>
+          </Link>
         </li>
-        <li className="nav-item">
-          <CustomNavLink
-            to="/menu"
-            className="nav-link"
-            activeClassName="isActive"
+        <li className={styles["nav-item"]}>
+          <Link
+            href="/menu"
+            className={`${styles["nav-link"]} ${
+              pathname === "/" ? styles.isActive : ""
+            }`}
             onClick={() => setIsActive(!isActive)}
           >
-            <span className="material-icons">local_dining</span>
+            <LocalDiningIcon className={styles["material-icons"]} />
             Menu
-          </CustomNavLink>
+          </Link>
         </li>
-        <li className="nav-item">
-          <CustomNavLink
-            to="/contacts"
-            className="nav-link"
-            activeClassName="isActive"
+        <li className={styles["nav-item"]}>
+          <Link
+            href="/contacts"
+            className={`${styles["nav-link"]} ${
+              pathname === "/" ? styles.isActive : ""
+            }`}
             onClick={() => setIsActive(!isActive)}
           >
-            <span className="material-icons">contacts</span>
+            <ContactsIcon className={styles["material-icons"]} />
             Contacts
-          </CustomNavLink>
+          </Link>
         </li>
-        <li className="nav-item">
-          <CustomNavLink
-            to="/login"
-            className="nav-link"
-            activeClassName="isActive"
+        <li className={styles["nav-item"]}>
+          <Link
+            href="/login"
+            className={`${styles["nav-link"]} ${
+              pathname === "/" ? styles.isActive : ""
+            }`}
             onClick={() => setIsActive(!isActive)}
           >
-            <span className="material-icons">login</span>
+            <LoginIcon className={styles["material-icons"]} />
             Login
-          </CustomNavLink>
+          </Link>
         </li>
       </ul>
     </nav>

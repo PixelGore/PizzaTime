@@ -1,147 +1,173 @@
-import { useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
-import "./Header.scss";
-import logo from "../../assets/common/logo.svg";
+"use client";
+
 import { useState } from "react";
-import { Menu } from "./menu/Menu";
-import { Cart } from "./cart/Cart";
+import { useSelector } from "react-redux";
+import Link from "next/link";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import LoginIcon from "@mui/icons-material/Login";
+
 import {
   getCart,
   getCartCount,
   getSubTotal,
-} from "../../Redux/Selectors/cartSelector";
-import { getAuthMe } from "../../Redux/Selectors/authSelector";
-import { CustomNavLink } from "../common/customNavLink/CustomNavLink";
+} from "../Redux/Selectors/cartSelector";
+import { getAuthMe } from "../Redux/Selectors/authSelector";
+import styles from "./header.module.scss";
+import { Menu } from "./menu/Menu";
+import { Cart } from "./cart/Cart";
 
-export const Header: React.FC = () => {
-  const [isOpenBrg, setisOpenBrg] = useState(false);
-  const [isOpenCart, setisOpenCart] = useState(false);
-  let cartItems = useSelector(getCart);
-  let cartCount = useSelector(getCartCount);
-  let subTotal = useSelector(getSubTotal);
+export const Header = () => {
+  const [isOpenBrg, setIsOpenBrg] = useState(false);
+  const [isOpenCart, setIsOpenCart] = useState(false);
+  const cartItems = useSelector(getCart);
+  const cartCount = useSelector(getCartCount);
+  const subTotal = useSelector(getSubTotal);
   const Me = useSelector(getAuthMe);
+  const pathname = usePathname();
 
   return (
-    <div className="header_wrapper">
-      <header className="header">
-        <div className="container">
-          <div className="header__body">
-            <NavLink
-              to="/"
-              className="header__logo"
+    <div className={styles.header_wrapper}>
+      <header className={styles.header}>
+        <div className={styles.container}>
+          <div className={styles.header__body}>
+            <Link
+              href="/"
+              className={styles.header__logo}
               onClick={() => {
-                setisOpenBrg(false);
-                setisOpenCart(false);
+                setIsOpenBrg(false);
+                setIsOpenCart(false);
               }}
             >
-              <img src={logo} alt="Header__logo" />
-            </NavLink>
+              <Image
+                src="assets/common/logo.svg"
+                alt="Header__logo"
+                width={200}
+                height={200}
+              />
+            </Link>
             {/* Burger */}
             <div
-              className={isOpenBrg ? "header__burger active" : "header__burger"}
+              className={
+                isOpenBrg
+                  ? `${styles.header__burger} ${styles.active}`
+                  : styles.header__burger
+              }
               onClick={() => {
-                setisOpenBrg(!isOpenBrg);
-                setisOpenCart(false);
+                setIsOpenBrg(!isOpenBrg);
+                setIsOpenCart(false);
               }}
             >
-              <span className="burger_middle"></span>
+              <span className={styles.burger_middle}></span>
             </div>
             {/* End Burger */}
             {/* Menu Start */}
-            <nav className="header__menu">
-              <ul className="header__list">
+            <nav className={styles.header__menu}>
+              <ul className={styles.header__list}>
                 <li>
-                  <CustomNavLink
-                    to="/home"
-                    className="header__link"
-                    activeClassName="isActive"
+                  <Link
+                    href="/home"
+                    className={`${styles.header__link} ${
+                      pathname === "/home" ? styles.isActive : ""
+                    }`}
                     onClick={() => {
-                      setisOpenBrg(false);
-                      setisOpenCart(false);
+                      setIsOpenBrg(false);
+                      setIsOpenCart(false);
                     }}
                   >
-                    <span className="header__link-text">Home</span>
-                  </CustomNavLink>
+                    <span className={styles["header__link-text"]}>Home</span>
+                  </Link>
                 </li>
                 <li>
-                  <CustomNavLink
-                    to="/about"
-                    className="header__link"
-                    activeClassName="isActive"
+                  <Link
+                    href="/about"
+                    className={`${styles.header__link} ${
+                      pathname === "/" ? styles.isActive : ""
+                    }`}
                     onClick={() => {
-                      setisOpenBrg(false);
-                      setisOpenCart(false);
+                      setIsOpenBrg(false);
+                      setIsOpenCart(false);
                     }}
                   >
-                    <span className="header__link-text">About us</span>
-                  </CustomNavLink>
+                    <span className={styles["header__link-text"]}>
+                      About us
+                    </span>
+                  </Link>
                 </li>
                 <li>
-                  <CustomNavLink
-                    to="/menu"
-                    className="header__link"
-                    activeClassName="isActive"
+                  <Link
+                    href="/menu"
+                    className={`${styles.header__link} ${
+                      pathname === "/" ? styles.isActive : ""
+                    }`}
                     onClick={() => {
-                      setisOpenBrg(false);
-                      setisOpenCart(false);
+                      setIsOpenBrg(false);
+                      setIsOpenCart(false);
                     }}
                   >
-                    <span className="header__link-text">Menu</span>
-                  </CustomNavLink>
+                    <span className={styles["header__link-text"]}>Menu</span>
+                  </Link>
                 </li>
                 <li>
-                  <CustomNavLink
-                    to="/contacts"
-                    className="header__link"
-                    activeClassName="isActive"
+                  <Link
+                    href="/contacts"
+                    className={`${styles.header__link} ${
+                      pathname === "/" ? styles.isActive : ""
+                    }`}
                     onClick={() => {
-                      setisOpenBrg(false);
-                      setisOpenCart(false);
+                      setIsOpenBrg(false);
+                      setIsOpenCart(false);
                     }}
                   >
-                    <span className="header__link-text">Contacts</span>
-                  </CustomNavLink>
+                    <span className={styles["header__link-text"]}>
+                      Contacts
+                    </span>
+                  </Link>
                 </li>
               </ul>
             </nav>
             {/* End Menu */}
-            <div className="header__end">
-              <div className="header__login">
-                <NavLink
-                  to="/login"
-                  className="header__login-link"
+            <div className={styles.header__end}>
+              <div className={styles.header__login}>
+                <Link
+                  href="/login"
+                  className={styles["header__login-link"]}
                   onClick={() => {
-                    setisOpenBrg(false);
-                    setisOpenCart(false);
+                    setIsOpenBrg(false);
+                    setIsOpenCart(false);
                   }}
                 >
-                  <span className="login-text">
-                    <span className="material-icons">
-                      {Me.length > 0 ? "account_circle" : "login"}
-                    </span>
+                  <span className={styles["login-text"]}>
+                    {Me.length > 0 ? (
+                      <AccountCircleIcon className={styles["material-icons"]} />
+                    ) : (
+                      <LoginIcon className={styles["material-icons"]} />
+                    )}
                   </span>
-                </NavLink>
+                </Link>
               </div>
               <div
-                className="header__cart"
+                className={styles.header__cart}
                 onClick={() => {
-                  setisOpenCart(!isOpenCart);
-                  setisOpenBrg(false);
+                  setIsOpenCart(!isOpenCart);
+                  setIsOpenBrg(false);
                 }}
               >
-                <span className="cart-text" data-before={cartCount}>
-                  <span className="material-icons">shopping_cart</span>
+                <span className={styles["cart-text"]} data-before={cartCount}>
+                  <ShoppingCartIcon className={styles["material-icons"]} />
                 </span>
               </div>
             </div>
           </div>
         </div>
       </header>
-      <Menu isActive={isOpenBrg} setIsActive={setisOpenBrg} />
+      <Menu isActive={isOpenBrg} setIsActive={setIsOpenBrg} />
       <Cart
         cartItems={cartItems}
         isActive={isOpenCart}
-        setisOpenCart={setisOpenCart}
+        setIsOpenCart={setIsOpenCart}
         subTotal={subTotal}
       />
     </div>

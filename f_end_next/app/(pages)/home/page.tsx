@@ -25,13 +25,3 @@ export default function Home() {
     </>
   );
 }
-/*
-<div
-  className="absolute -z-10 top-0 left-0 w-full h-full opacity-50"
-  style={{
-    backgroundImage: "url(/assets/common/bg.jpg)",
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-  }}
-></div>
-*/
