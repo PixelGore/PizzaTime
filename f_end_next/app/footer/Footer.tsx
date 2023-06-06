@@ -11,7 +11,7 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import VkIcon from "@/app/common/icons/VkIcon";
 
-import "./footer.scss";
+import "./Footer.scss";
 
 export const Footer = () => {
   return (

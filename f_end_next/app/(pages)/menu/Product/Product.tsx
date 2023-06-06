@@ -3,7 +3,7 @@ import Image from "next/image";
 import InfoIcon from "@mui/icons-material/Info";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
-import styles from "../styles.module.scss";
+import styles from "../Menu.scss";
 import { ProductsType } from "@/app/types/types";
 
 export const Product: FC<PropsType> = ({ product, addToCart }) => {

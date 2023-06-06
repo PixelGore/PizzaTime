@@ -6,7 +6,7 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 
 import { ProductsType } from "@/app/types/types";
-import styles from "../cart.module.scss";
+import "../Cart.scss";
 
 export const CartItem: FC<cartItemType> = ({
   product,
@@ -29,42 +29,40 @@ export const CartItem: FC<cartItemType> = ({
   };
 
   return (
-    <div className={`${styles["cart-item"]}`}>
+    <div className="cart-item">
       <Image
         src={`http://127.0.0.1:8000${product.image}`}
         alt="product"
         width={300}
         height={300}
       />
-      <div className={`${styles["cart-item__info"]}`}>
-        <h3 className={`${styles["item__title"]}`}>{product.name}</h3>
-        <h5 className={`${styles["item__description"]}`}>
-          {shortDesc(product.description)}
-        </h5>
-        <div className={`${styles["item__pricing"]}`}>
-          <span className={`${styles["quantity"]}`}>
+      <div className="cart-item__info">
+        <h3 className="item__title">{product.name}</h3>
+        <h5 className="item__description">{shortDesc(product.description)}</h5>
+        <div className="item__pricing">
+          <span className="quantity">
             <button
-              className={`${styles["btn"]}`}
+              className="btn"
               disabled={product.quantity <= 1}
               onClick={() => handleReduce()}
             >
-              <RemoveIcon className={`${styles["material-icons"]}`} />
+              <RemoveIcon className="material-icons" />
             </button>
 
-            <span className={`${styles["item-qty"]}`}>{product.quantity}</span>
-            <button className={`${styles["btn"]}`}>
+            <span className="item-qty">{product.quantity}</span>
+            <button className="btn">
               <AddIcon
-                className={`${styles["material-icons"]}`}
+                className="material-icons"
                 onClick={() => handleIncrease()}
               />
             </button>
           </span>
-          <span className={styles.price}>
+          <span className="price">
             <CloseIcon
-              className={`${styles["material-icons"]}`}
+              className="material-icons"
               onClick={() => handleRemove()}
             />
-            <span className={`${styles["item-price"]}`}>
+            <span className="item-price">
               ${(+product.price * product.quantity).toFixed(2)}
             </span>
           </span>

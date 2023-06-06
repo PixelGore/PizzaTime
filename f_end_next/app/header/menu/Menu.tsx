@@ -7,77 +7,62 @@ import LocalDiningIcon from "@mui/icons-material/LocalDining";
 import ContactsIcon from "@mui/icons-material/Contacts";
 import LoginIcon from "@mui/icons-material/Login";
 
-import styles from "./menu.module.scss";
+import "./Menu.scss";
+import cn from "classnames";
 
 export const Menu: FC<PropsType> = ({ isActive, setIsActive }) => {
   const pathname = usePathname();
   return (
-    <nav
-      className={
-        isActive
-          ? `${styles["mobile-menu"]} ${styles.active}`
-          : `${styles["mobile-menu"]}`
-      }
-    >
-      <div className={styles.blur} />
-      <ul className={styles["nav-list"]}>
-        <li className={styles["nav-item"]}>
+    <nav className={cn("mobile-menu", { active: isActive })}>
+      <div className="blur" />
+      <ul className="nav-list">
+        <li className="nav-item">
           <Link
             href="/home"
-            className={`${styles["nav-link"]} ${
-              pathname === "/" ? styles.isActive : ""
-            }`}
+            className={cn("nav-link", { isActive: pathname === "/home" })}
             onClick={() => setIsActive(!isActive)}
           >
-            <HomeIcon className={styles["material-icons"]} />
+            <HomeIcon className={"material-icons"} />
             Home
           </Link>
         </li>
-        <li className={styles["nav-item"]}>
+        <li className={"nav-item"}>
           <Link
             href="/about"
-            className={`${styles["nav-link"]} ${
-              pathname === "/" ? styles.isActive : ""
-            }`}
+            className={cn("nav-link", { isActive: pathname === "/" })}
             onClick={() => setIsActive(!isActive)}
           >
-            <GroupsIcon className={styles["material-icons"]} />
+            <GroupsIcon className={"material-icons"} />
             About us
           </Link>
         </li>
-        <li className={styles["nav-item"]}>
+        <li className={"nav-item"}>
           <Link
             href="/menu"
-            className={`${styles["nav-link"]} ${
-              pathname === "/" ? styles.isActive : ""
-            }`}
+            className={cn("nav-link", { isActive: pathname === "/" })}
             onClick={() => setIsActive(!isActive)}
           >
-            <LocalDiningIcon className={styles["material-icons"]} />
+            <LocalDiningIcon className={"material-icons"} />
             Menu
           </Link>
         </li>
-        <li className={styles["nav-item"]}>
+        <li className={"nav-item"}>
           <Link
             href="/contacts"
-            className={`${styles["nav-link"]} ${
-              pathname === "/" ? styles.isActive : ""
-            }`}
+            className={cn("nav-link", { isActive: pathname === "/" })}
             onClick={() => setIsActive(!isActive)}
           >
-            <ContactsIcon className={styles["material-icons"]} />
+            <ContactsIcon className={"material-icons"} />
             Contacts
           </Link>
         </li>
-        <li className={styles["nav-item"]}>
+        <li className={"nav-item"}>
           <Link
             href="/login"
-            className={`${styles["nav-link"]} ${
-              pathname === "/" ? styles.isActive : ""
-            }`}
+            className={cn("nav-link", { isActive: pathname === "/" })}
             onClick={() => setIsActive(!isActive)}
           >
-            <LoginIcon className={styles["material-icons"]} />
+            <LoginIcon className={"material-icons"} />
             Login
           </Link>
         </li>

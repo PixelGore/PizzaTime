@@ -7,8 +7,9 @@ import TrendingFlatIcon from "@mui/icons-material/TrendingFlat";
 
 import { ProductsType } from "@/app/types/types";
 import { AddToCart, RemoveFromCart } from "../../Redux/Reducers/cartReducer";
-import styles from "./cart.module.scss";
+import "./Cart.scss";
 import { CartItem } from "./CartItem/CartItem";
+import cn from "classnames";
 
 export const Cart: FC<CartType> = ({
   cartItems,
@@ -27,39 +28,33 @@ export const Cart: FC<CartType> = ({
   };
 
   return (
-    <div
-      className={
-        isActive
-          ? `${styles["cart-container"]} ${styles.active}`
-          : `${styles["cart-container"]}`
-      }
-    >
-      <div className={`${styles["cart-title"]}`}>
+    <div className={cn("cart-container", { active: isActive })}>
+      <div className="cart-title">
         <span>Your Cart</span>
         <ArrowRightAltIcon
-          className={`${styles["material-icons"]}`}
+          className="material-icons"
           onClick={() => setIsOpenCart(false)}
         />
       </div>
 
       <hr />
       {cartItems.length === 0 ? (
-        <div className={`${styles["empty-cart"]}`}>
+        <div className="empty-cart">
           <h4>Your cart looks so empty 😅</h4>
-          <div className={`${styles["redirect-container"]}`}>
-            <span className={`${styles["redirect-text"]}`}>
+          <div className="redirect-container">
+            <span className="redirect-text">
               Let me help you by showing you our menu !
             </span>
-            <Link href="/menu" className={`${styles["redirect-link"]}`}>
-              <div className={`${styles["redirect-btn"]}`}>
+            <Link href="/menu" className="redirect-link">
+              <div className="redirect-btn">
                 To Menu
-                <SendIcon className={`${styles["material-icons"]}`} />
+                <SendIcon className="material-icons" />
               </div>
             </Link>
           </div>
         </div>
       ) : (
-        <div className={`${styles["cart-Items"]}`}>
+        <div className="cart-Items">
           {cartItems.map((product) => (
             <CartItem
               key={product.id}
@@ -72,22 +67,19 @@ export const Cart: FC<CartType> = ({
       )}
 
       <hr />
-      <div className={`${styles["cart-total"]}`}>
-        <span className={`${styles["text"]}`}>Subtotal</span>
-        <span className={`${styles["price"]}`}>${subTotal}</span>
+      <div className="cart-total">
+        <span className="text">Subtotal</span>
+        <span className="price">${subTotal}</span>
       </div>
-      <div className={`${styles["cart-description"]}`}>
+      <div className="cart-description">
         <h5>FREE DOMESTIC SHIPPING OVER $50</h5>
       </div>
       {cartItems.length === 0 ? null : (
-        <div className={`${styles["cart-checkout"]}`}>
+        <div className="cart-checkout">
           <Link href="/checkout">
-            <div
-              className={`${styles["cart-button"]}`}
-              onClick={() => setIsOpenCart(false)}
-            >
+            <div className="cart-button" onClick={() => setIsOpenCart(false)}>
               <span>Check out</span>
-              <TrendingFlatIcon className={`${styles["material-icons"]}`} />
+              <TrendingFlatIcon className="material-icons" />
             </div>
           </Link>
         </div>

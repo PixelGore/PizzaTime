@@ -1,12 +1,12 @@
 import React from "react";
 import Image from "next/image";
 
-import styles from "./loading.module.scss";
+import "./Loading.scss";
 
 //Preloader Component
 const Loading = () => {
   return (
-    <div className={styles.preLoader}>
+    <div className="preLoader">
       <Image
         src="/assets/common/preloader.svg"
         alt="preloader"

@@ -5,10 +5,8 @@ import { AddToCart } from "../../Redux/Reducers/cartReducer";
 import { requestMenu } from "../../Redux/Reducers/menuReducer";
 import { getMenu } from "../../Redux/Selectors/menuSelector";
 import { MenuType, ProductsType } from "../../types/types";
-import styles from "./styles.module.scss";
+import "./Menu.scss";
 import { Product } from "./Product/Product";
-
-
 
 export default function Menu() {
   const menu: MenuType[] = useSelector(getMenu);
@@ -24,21 +22,19 @@ export default function Menu() {
   };
 
   return (
-    <div className={`${styles["menu-content"]}`}>
-      <div className={`${styles["container"]}`}>
-        <div className={`${styles["menu"]}`}>
+    <div className="menu-content">
+      <div className="container">
+        <div className="menu">
           {menu.map((item) => (
             <div key={item.id}>
-              <div className={`${styles["menu-category"]}`}>
-                <span className={`${styles["category__title"]}`}>
-                  {item.name}
-                </span>
-                <a href="/" className={`${styles["menu-category__link"]}`}>
+              <div className="menu-category">
+                <span className="category__title">{item.name}</span>
+                <a href="/" className="menu-category__link">
                   Go to {item.name}
                 </a>
               </div>
               <hr />
-              <div className={`${styles["menu-items"]}`}>
+              <div className="menu-items">
                 {item.products.map((product) => (
                   <Product
                     key={product.id}

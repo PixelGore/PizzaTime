@@ -3,19 +3,19 @@ import StarIcon from "@mui/icons-material/Star";
 import StarHalfIcon from "@mui/icons-material/StarHalf";
 
 import PizzaIcon from "@/app/common/icons/Pizza";
-import styles from "./styles.module.scss";
+import "./About.scss";
 
 export default function About() {
   return (
-    <div className={`${styles["about-content"]}`}>
-      <div className={`${styles["about-section"]}`}>
-        <div className={`${styles["about-section__image"]}`}>
-          <PizzaIcon className={`${styles["section-about__logo"]}`} />
+    <div className="about-content">
+      <div className="about-section">
+        <div className="about-section__image">
+          <PizzaIcon className="section-about__logo" />
         </div>
 
-        <div className={`${styles["about-section__main"]}`}>
-          <h2 className={`${styles["about-section__title"]}`}>About us</h2>
-          <p className={`${styles["about-section__text"]}`}>
+        <div className="about-section__main">
+          <h2 className="about-section__title">About us</h2>
+          <p className="about-section__text">
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloremque
             accusamus enim minima? Dolore, dignissimos aspernatur necessitatibus
             minus, enim magnam voluptate voluptatem rerum ullam non, aperiam
@@ -55,17 +55,17 @@ export default function About() {
           </p>
           <hr className="mx-auto" />
 
-          <div className={`${styles["about-section__rating"]}`}>
-            <StarIcon className={`${styles["material-icons"]}`} />
-            <StarIcon className={`${styles["material-icons"]}`} />
+          <div className="about-section__rating">
+            <StarIcon className="material-icons" />
+            <StarIcon className="material-icons" />
 
-            <StarIcon className={`${styles["material-icons"]}`} />
+            <StarIcon className="material-icons" />
 
-            <StarIcon className={`${styles["material-icons"]}`} />
-            <StarHalfIcon className={`${styles["material-icons"]}`} />
+            <StarIcon className="material-icons" />
+            <StarHalfIcon className="material-icons" />
           </div>
 
-          <div className={`${styles["about-section__review"]}`}>
+          <div className="about-section__review">
             <h3>"Best pizza in Melbourne"</h3>
             <p>
               A place with great atmosphere and even greater pizza. The pizza
@@ -79,9 +79,9 @@ export default function About() {
           </div>
         </div>
       </div>
-      <div className={`${styles["about-secondary"]}`}>
-        <div className={`${styles["map-section"]}`}>
-          <div className={`${styles["map__info"]}`}>
+      <div className="about-secondary">
+        <div className="map-section">
+          <div className="map__info">
             <h4>Our location</h4>
             <h2>Visit us!</h2>
             <hr className="mx-auto" />
@@ -93,7 +93,7 @@ export default function About() {
             Google Maps with location here
           </div>
         </div>
-        <div className={`${styles["contact-section"]}`}>
+        <div className="contact-section">
           <h3>Have a question ?</h3>
           <h2>Contact us</h2>
           <hr className="mx-auto" />
