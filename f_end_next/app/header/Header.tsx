@@ -44,8 +44,8 @@ export const Header = () => {
               <Image
                 src="assets/common/logo.svg"
                 alt="Header__logo"
-                width={200}
-                height={200}
+                width={400}
+                height={400}
               />
             </Link>
             {/* Burger */}
