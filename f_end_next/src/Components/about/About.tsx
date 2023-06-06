@@ -1,7 +1,7 @@
 import { FC } from "react";
 import "./About.scss";
 import Map from "./map/GMap";
-import PizzaIcon from "../../assets/common/pizza";
+import PizzaIcon from "@/app/common/icons/Pizza";
 
 const About: FC = () => {
   return (
