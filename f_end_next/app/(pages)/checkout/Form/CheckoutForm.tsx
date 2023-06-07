@@ -1,17 +1,20 @@
+"use client";
 import React, { createRef } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Formik, Field, ErrorMessage, Form } from "formik";
 import * as Yup from "yup";
 
-import { CheckoutType, ProductsType } from "@/app/types/types";
+import { CheckoutType } from "@/app/types/types";
 import { SubmitCart } from "@/app/Redux/Reducers/cartReducer";
 
 import "./CheckoutForm.scss";
-import dynamic from "next/dynamic";
 import { PayPalButton } from "react-paypal-button-v2";
+import { getCart, getGrandTotal } from "@/app/Redux/Selectors/cartSelector";
 
-export const CheckoutForm: React.FC<propsType> = ({ items, total }) => {
+export const CheckoutForm = () => {
   const dispatch = useDispatch();
+  let items = useSelector(getCart);
+  let total = useSelector(getGrandTotal);
 
   // Local Values
   const initialValues: CheckoutType = {
@@ -78,7 +81,7 @@ export const CheckoutForm: React.FC<propsType> = ({ items, total }) => {
             .required("Address is required"),
         })}
       >
-        {(params) => (
+        {() => (
           <Form>
             <div className="form-group">
               <Field
@@ -134,9 +137,4 @@ export const CheckoutForm: React.FC<propsType> = ({ items, total }) => {
       </Formik>
     </div>
   );
-};
-type propsType = {
-  items: ProductsType[];
-  total: number;
-  isFetching: boolean;
 };
