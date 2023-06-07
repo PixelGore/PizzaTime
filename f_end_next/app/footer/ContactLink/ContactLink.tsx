@@ -24,10 +24,6 @@ const ContactLink: FC<ContactLinkProps> = ({ icon }) => {
       <VkIcon className="fill-white hover:fill-cyan-400 transition-colors duration-150" />
     ),
   };
-  return (
-    <li>
-      <Link href="/">{iconMap[icon]}</Link>
-    </li>
-  );
+  return <Link href="/">{iconMap[icon]}</Link>;
 };
 export default ContactLink;
