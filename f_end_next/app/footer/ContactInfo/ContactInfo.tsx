@@ -8,6 +8,7 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import Link from "next/link";
 import CallIcon from "@mui/icons-material/Call";
 import EmailIcon from "@mui/icons-material/Email";
+import "../Footer.scss";
 
 type ContactInfoProps = {
   icon: ContactInfoIcon;

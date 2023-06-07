@@ -1,8 +1,5 @@
-"use client";
-import StarIcon from "@mui/icons-material/Star";
-import StarHalfIcon from "@mui/icons-material/StarHalf";
-
 import PizzaIcon from "@/app/common/icons/Pizza";
+import Rating from "@/app/(pages)/about/Rating/Rating";
 import "./About.scss";
 
 export default function About() {
@@ -56,13 +53,7 @@ export default function About() {
           <hr className="mx-auto" />
 
           <div className="about-section__rating">
-            <StarIcon className="material-icons" />
-            <StarIcon className="material-icons" />
-
-            <StarIcon className="material-icons" />
-
-            <StarIcon className="material-icons" />
-            <StarHalfIcon className="material-icons" />
+            <Rating />
           </div>
 
           <div className="about-section__review">
