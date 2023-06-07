@@ -29,7 +29,7 @@ export const Menu: FC<PropsType> = ({ isActive, setIsActive }) => {
         <li className={"nav-item"}>
           <Link
             href="/about"
-            className={cn("nav-link", { isActive: pathname === "/" })}
+            className={cn("nav-link", { isActive: pathname === "/about" })}
             onClick={() => setIsActive(!isActive)}
           >
             <GroupsIcon className={"material-icons"} />
@@ -39,7 +39,7 @@ export const Menu: FC<PropsType> = ({ isActive, setIsActive }) => {
         <li className={"nav-item"}>
           <Link
             href="/menu"
-            className={cn("nav-link", { isActive: pathname === "/" })}
+            className={cn("nav-link", { isActive: pathname === "/menu" })}
             onClick={() => setIsActive(!isActive)}
           >
             <LocalDiningIcon className={"material-icons"} />
@@ -49,7 +49,7 @@ export const Menu: FC<PropsType> = ({ isActive, setIsActive }) => {
         <li className={"nav-item"}>
           <Link
             href="/contacts"
-            className={cn("nav-link", { isActive: pathname === "/" })}
+            className={cn("nav-link", { isActive: pathname === "/contacts" })}
             onClick={() => setIsActive(!isActive)}
           >
             <ContactsIcon className={"material-icons"} />
@@ -59,7 +59,7 @@ export const Menu: FC<PropsType> = ({ isActive, setIsActive }) => {
         <li className={"nav-item"}>
           <Link
             href="/login"
-            className={cn("nav-link", { isActive: pathname === "/" })}
+            className={cn("nav-link", { isActive: pathname === "/login" })}
             onClick={() => setIsActive(!isActive)}
           >
             <LoginIcon className={"material-icons"} />

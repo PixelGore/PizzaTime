@@ -6,7 +6,7 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 
 import { ProductsType } from "@/app/types/types";
-import "../Cart.scss";
+import "@/app/header/cart/CartModal/Cart.scss";
 
 export const CartItem: FC<cartItemType> = ({
   product,

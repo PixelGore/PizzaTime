@@ -12,23 +12,23 @@ export const Product: FC<PropsType> = ({ product, addToCart }) => {
   };
 
   return (
-    <div className={`${styles["menu-item"]}`}>
+    <div className={`${styles["Menu-item"]}`}>
       <Image
         src={`http://127.0.0.1:8000${product.image}`}
         alt="menu"
-        className={`${styles["menu-item__image"]}`}
+        className={`${styles["Menu-item__image"]}`}
         width={600}
         height={600}
       />
 
-      <div className={`${styles["menu-item__info"]}`}>
-        <span className={`${styles["menu-item__title"]}`}>{product.name}</span>
+      <div className={`${styles["Menu-item__info"]}`}>
+        <span className={`${styles["Menu-item__title"]}`}>{product.name}</span>
         <InfoIcon
           className={`${styles["material-icons"]} ${styles["menu__info-btn"]}`}
         />
       </div>
       <div
-        className={`${styles["menu-item-end"]}`}
+        className={`${styles["Menu-item-end"]}`}
         onClick={() => handleClick()}
       >
         <span className={`${styles["item__price"]}`}>${product.price}</span>
