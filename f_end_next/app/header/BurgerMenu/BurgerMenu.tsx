@@ -13,7 +13,7 @@ export default function BurgerMenu() {
   ) as RefObject<HTMLDivElement>;
 
   return (
-    <div ref={ref} className='-order-1'>
+    <div ref={ref} className="-order-1">
       <button
         className={cn("header__burger", { active: isMenuOpen })}
         onClick={() => {

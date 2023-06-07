@@ -1,4 +1,3 @@
-
 import { Cart } from "./Cart/Cart";
 import "./Checkout.scss";
 import { CheckoutForm } from "./Form/CheckoutForm";

@@ -1,16 +1,16 @@
 .shopping-cart {
-    .divider {
-        height: 1px;
-        background-color: #FFA650;
-        border: none;
-    }
+  .divider {
+    height: 1px;
+    background-color: #ffa650;
+    border: none;
+  }
 
-    .totals {
-        float: right;
+  .totals {
+    float: right;
 
-        .totals-item {
-            display: flex;
-            justify-content: space-evenly;
-        }
+    .totals-item {
+      display: flex;
+      justify-content: space-evenly;
     }
+  }
 }

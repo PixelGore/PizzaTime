@@ -1,21 +1,21 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef } from "react";
 
 const useTagBlur = (flag: boolean, setFlag: (newFlag: boolean) => void) => {
-  const ref = useRef<HTMLElement>(null)
+  const ref = useRef<HTMLElement>(null);
   useEffect(() => {
     function handleClickOutside(event: any) {
       if (ref.current && !ref.current.contains(event.target) && flag) {
-        setFlag(false)
+        setFlag(false);
       }
     }
 
-    document.addEventListener('mouseup', handleClickOutside)
+    document.addEventListener("mouseup", handleClickOutside);
     return () => {
-      document.removeEventListener('mouseup', handleClickOutside)
-    }
-  }, [ref, flag, setFlag])
+      document.removeEventListener("mouseup", handleClickOutside);
+    };
+  }, [ref, flag, setFlag]);
 
-  return ref
-}
+  return ref;
+};
 
-export default useTagBlur
+export default useTagBlur;

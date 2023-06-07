@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import "./Cart.scss";
 import { Product } from "./CartItem/Product";
