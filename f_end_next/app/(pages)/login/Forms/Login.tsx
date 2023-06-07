@@ -1,19 +1,16 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import cn from "classnames";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import GoogleIcon from "@mui/icons-material/Google";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
 import { login } from "@/app/Redux/Reducers/authReducer";
-import {
-  getLogError,
-  getAuthMe,
-  getisFetchingLogin,
-} from "@/app/Redux/Selectors/authSelector";
+import { getLogError, getAuthMe } from "@/app/Redux/Selectors/authSelector";
 
 // Login Component
 export const Login = () => {
@@ -23,10 +20,11 @@ export const Login = () => {
   const initialValues: LoginFormType = { username: "", password: "" };
   const LogError = useSelector(getLogError);
   const Me = useSelector(getAuthMe);
+  const router = useRouter();
 
   // If logged redirect to home
   if (Me.length > 0) {
-    redirect("/home");
+    router.push("/home");
   }
 
   return (
@@ -48,11 +46,9 @@ export const Login = () => {
           <Form className="signin-form">
             <h2 className="title">Sign in</h2>
             <div
-              className={
-                errors.username && touched.username
-                  ? "input-field error"
-                  : "input-field"
-              }
+              className={cn("input-field", {
+                error: errors.username && touched.username,
+              })}
             >
               <i className="fa fa-user"></i>
               <Field name="username" placeholder="Username" />
@@ -63,11 +59,9 @@ export const Login = () => {
             />
 
             <div
-              className={
-                errors.password && touched.password
-                  ? "input-field error"
-                  : "input-field"
-              }
+              className={cn("input-field", {
+                error: errors.password && touched.password,
+              })}
             >
               <i className="fa fa-lock"></i>
               <Field name="password" type="password" placeholder="Password" />

@@ -1,7 +1,7 @@
 "use client";
 
 import { useSelector } from "react-redux";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 import {
   getCart,
@@ -20,9 +20,10 @@ export default function Checkout() {
   let grandTotal = useSelector(getGrandTotal);
   let isFetching = useSelector(getisFetching);
   let shippingPrice = useSelector(getShippingPrice).toFixed(2);
+  const router = useRouter();
 
   if (cartItems.length <= 0) {
-    redirect("/home");
+    router.push("/home");
   }
 
   return (

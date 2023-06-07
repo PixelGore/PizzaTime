@@ -8,11 +8,8 @@ import GoogleIcon from "@mui/icons-material/Google";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
 import { register } from "@/app/Redux/Reducers/authReducer";
-import {
-  getisFetchingRegister,
-  getRegError,
-  getRegMsg,
-} from "@/app/Redux/Selectors/authSelector";
+import { getRegError, getRegMsg } from "@/app/Redux/Selectors/authSelector";
+import cn from "classnames";
 
 // Registration Component
 export const Registration = ({ setIsActive, active }: propsType) => {
@@ -27,7 +24,6 @@ export const Registration = ({ setIsActive, active }: propsType) => {
   };
   const RegError = useSelector(getRegError);
   const RegMsg = useSelector(getRegMsg);
-  const isFetching = useSelector(getisFetchingRegister);
 
   // Switch to login if registration is successful
   useEffect(() => {
@@ -84,11 +80,9 @@ export const Registration = ({ setIsActive, active }: propsType) => {
             <h2 className="title">Sign up</h2>
 
             <div
-              className={
-                errors.username && touched.username
-                  ? "input-field error"
-                  : "input-field"
-              }
+              className={cn("input-field", {
+                error: errors.username && touched.username,
+              })}
             >
               <i className="fa fa-user"></i>
               <Field name="username" placeholder="Username" />
@@ -99,11 +93,9 @@ export const Registration = ({ setIsActive, active }: propsType) => {
             />
 
             <div
-              className={
-                errors.phoneNumber && touched.phoneNumber
-                  ? "input-field error"
-                  : "input-field"
-              }
+              className={cn("input-field", {
+                error: errors.phoneNumber && touched.phoneNumber,
+              })}
             >
               <i className="fa fa-phone "></i>
               <Field name="phoneNumber" placeholder="Phone number" />
@@ -114,11 +106,9 @@ export const Registration = ({ setIsActive, active }: propsType) => {
             />
 
             <div
-              className={
-                errors.password && touched.password
-                  ? "input-field error"
-                  : "input-field"
-              }
+              className={cn("input-field", {
+                error: errors.password && touched.password,
+              })}
             >
               <i className="fa fa-lock"></i>
               <Field name="password" type="password" placeholder="Password" />
@@ -129,11 +119,9 @@ export const Registration = ({ setIsActive, active }: propsType) => {
             />
 
             <div
-              className={
-                errors.password2 && touched.password2
-                  ? "input-field error"
-                  : "input-field"
-              }
+              className={cn("input-field", {
+                error: errors.password2 && touched.password2,
+              })}
             >
               <i className="fa fa-lock"></i>
               <Field
