@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { Header } from "@/app/header/Header";
+import Header from "@/app/header/Header";
 import ReduxProvider from "@/app/providers/ReduxProvider";
 import { Footer } from "@/app/footer/Footer";
 

@@ -7,7 +7,7 @@ import BurgerMenu from "@/app/header/BurgerMenu/BurgerMenu";
 import Navbar from "@/app/header/Navbar/Navbar";
 import Cart from "@/app/header/Cart/Cart";
 
-export const Header = () => {
+export default async function Header() {
   return (
     <div className="header_wrapper">
       <header className="header">
@@ -36,4 +36,4 @@ export const Header = () => {
       </header>
     </div>
   );
-};
+}

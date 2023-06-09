@@ -33,19 +33,6 @@ function saveToLocalStorage(state: localStorageType) {
   }
 }
 
-// load string from localStarage and convert into an Object
-// invalid output must be undefined
-function loadFromLocalStorage() {
-  try {
-    const serialisedState = localStorage.getItem("persistentState");
-    if (serialisedState === null) return undefined;
-    return JSON.parse(serialisedState);
-  } catch (e) {
-    console.warn(e);
-    return undefined;
-  }
-}
-
 // ActionTypes
 export type InferActionTypes<T> = T extends {
   [keys: string]: (...args: [any]) => infer U;
@@ -70,7 +57,6 @@ const composeEnhancers =
 
 const store = createStore(
   rootReducer,
-  loadFromLocalStorage(),
   composeEnhancers(applyMiddleware(thunkMiddleware))
 );
 

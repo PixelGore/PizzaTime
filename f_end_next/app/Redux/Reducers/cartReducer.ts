@@ -15,6 +15,11 @@ export const actions = {
   clearCartAC: () => ({ type: "cart/CLEAR_CART" } as const),
   IsFetchingAC: (isFetching: boolean) =>
     ({ type: "cart/IS_FETCHING", payload: isFetching } as const),
+  initializeCartAC: (cart: InitialStorageStateType) =>
+    ({
+      type: "cart/INITIALIZE_CART",
+      payload: cart,
+    } as const),
 };
 type ActionTypes = InferActionTypes<typeof actions>;
 
@@ -25,7 +30,6 @@ let initialState = {
   grandTotal: 0,
   cartCount: 0,
   shippingPrice: 2,
-  isFetching: false,
 };
 export type InitialStorageStateType = typeof initialState;
 
@@ -103,10 +107,10 @@ const cartReducer = (
         cartCount: 0,
         shippingPrice: 2,
       };
-    case "cart/IS_FETCHING":
+    case "cart/INITIALIZE_CART":
       return {
         ...state,
-        isFetching: action.payload,
+        ...action.payload,
       };
     default:
       return state;

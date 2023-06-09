@@ -6,21 +6,21 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 
 import { ProductsType } from "@/app/types/types";
-import "@/app/header/cart/CartModal/Cart.scss";
+import "@/app/header/Cart/CartModal/Cart.scss";
 
 export const CartItem: FC<cartItemType> = ({
   product,
   handleQuantity,
   rmItem,
 }) => {
-  let handleReduce = () => {
+  const handleReduce = () => {
     product.quantity = product.quantity - 2;
     handleQuantity(product);
   };
-  let handleIncrease = () => {
+  const handleIncrease = () => {
     handleQuantity(product);
   };
-  let handleRemove = () => {
+  const handleRemove = () => {
     rmItem(product);
   };
 

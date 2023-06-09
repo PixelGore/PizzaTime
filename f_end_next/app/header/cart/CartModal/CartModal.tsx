@@ -9,7 +9,7 @@ import cn from "classnames";
 import { ProductsType } from "@/app/types/types";
 import { AddToCart, RemoveFromCart } from "@/app/Redux/Reducers/cartReducer";
 import "./Cart.scss";
-import { CartItem } from "@/app/header/Cart/CartItem/CartItem";
+import { CartItem } from "@/app/header/Cart/CartModal/CartItem/CartItem";
 import { getCart, getSubTotal } from "@/app/Redux/Selectors/cartSelector";
 
 export const CartModal: FC<CartType> = ({ isActive, setIsOpenCart }) => {
