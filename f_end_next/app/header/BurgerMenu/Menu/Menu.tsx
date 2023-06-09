@@ -10,7 +10,11 @@ import LoginIcon from "@mui/icons-material/Login";
 import "./Menu.scss";
 import cn from "classnames";
 
-export const Menu: FC<PropsType> = ({ isActive, setIsActive }) => {
+type MenuProps = {
+  isActive: boolean;
+  setIsActive: Dispatch<SetStateAction<boolean>>;
+};
+export const Menu: FC<MenuProps> = ({ isActive, setIsActive }) => {
   const pathname = usePathname();
   return (
     <nav className={cn("mobile-menu", { active: isActive })}>
@@ -69,8 +73,4 @@ export const Menu: FC<PropsType> = ({ isActive, setIsActive }) => {
       </ul>
     </nav>
   );
-};
-type PropsType = {
-  isActive: boolean;
-  setIsActive: Dispatch<SetStateAction<boolean>>;
 };

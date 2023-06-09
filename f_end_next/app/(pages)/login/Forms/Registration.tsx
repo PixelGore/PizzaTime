@@ -67,10 +67,11 @@ export const Registration = ({ setIsActive, active }: propsType) => {
           password2: Yup.string()
             .when("password", {
               is: (val: string) => !!(val && val.length > 0),
-              then: Yup.string().oneOf(
-                [Yup.ref("password")],
-                "Both password need to be the same!"
-              ) as any,
+              then: () =>
+                Yup.string().oneOf(
+                  [Yup.ref("password")],
+                  "Both password need to be the same!"
+                ),
             })
             .required("Repeating password is required"),
         })}

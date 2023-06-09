@@ -10,8 +10,8 @@ const Loading = () => {
       <Image
         src="/assets/common/preloader.svg"
         alt="preloader"
-        width={1000}
-        height={1000}
+        width={500}
+        height={500}
       />
     </div>
   );

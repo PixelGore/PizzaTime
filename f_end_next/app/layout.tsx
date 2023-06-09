@@ -18,7 +18,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body className={inter.className}>
         <ReduxProvider>
           <Header />
-          {children}
+          <div className="min-h-screen">{children}</div>
           <Footer />
         </ReduxProvider>
       </body>

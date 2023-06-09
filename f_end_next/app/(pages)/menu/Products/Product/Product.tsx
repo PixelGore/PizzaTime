@@ -3,7 +3,7 @@ import Image from "next/image";
 import InfoIcon from "@mui/icons-material/Info";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
-import styles from "../Menu.scss";
+import "../../Menu.scss";
 import { ProductsType } from "@/app/types/types";
 
 export const Product: FC<PropsType> = ({ product, addToCart }) => {
@@ -12,27 +12,22 @@ export const Product: FC<PropsType> = ({ product, addToCart }) => {
   };
 
   return (
-    <div className={`${styles["Menu-item"]}`}>
+    <div className="menu-item">
       <Image
         src={`http://127.0.0.1:8000${product.image}`}
         alt="menu"
-        className={`${styles["Menu-item__image"]}`}
+        className="menu-item__image"
         width={600}
         height={600}
       />
 
-      <div className={`${styles["Menu-item__info"]}`}>
-        <span className={`${styles["Menu-item__title"]}`}>{product.name}</span>
-        <InfoIcon
-          className={`${styles["material-icons"]} ${styles["menu__info-btn"]}`}
-        />
+      <div className={"menu-item__info"}>
+        <span className={"menu-item__title"}>{product.name}</span>
+        <InfoIcon className="material-icons menu__info-btn" />
       </div>
-      <div
-        className={`${styles["Menu-item-end"]}`}
-        onClick={() => handleClick()}
-      >
-        <span className={`${styles["item__price"]}`}>${product.price}</span>
-        <AddShoppingCartIcon className={`${styles["material-icons"]}`} />
+      <div className="menu-item-end" onClick={() => handleClick()}>
+        <span className="item__price">${product.price}</span>
+        <AddShoppingCartIcon className="material-icons" />
       </div>
     </div>
   );
