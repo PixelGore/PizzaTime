@@ -6,6 +6,7 @@ from django.dispatch import receiver
 from rest_framework.authtoken.models import Token
 
 from phonenumber_field.modelfields import PhoneNumberField
+
 # Create your models here.
 
 
@@ -29,7 +30,9 @@ class Product(models.Model):
     name = models.CharField(max_length=50)
     description = models.CharField(max_length=320)
     price = models.DecimalField(max_digits=5, decimal_places=2)
-    category = models.ForeignKey(Category, related_name='products', on_delete=models.CASCADE)
+    category = models.ForeignKey(
+        Category, related_name="products", on_delete=models.CASCADE
+    )
     image = models.ImageField()
 
     def __str__(self):
@@ -40,13 +43,12 @@ class Product(models.Model):
         try:
             url = self.image.url
         except:
-            url = ''
+            url = ""
         return url
 
 
-class Order (models.Model):
-    customer = models.ForeignKey(
-        Customer, on_delete=models.CASCADE, default=1)
+class Order(models.Model):
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE, default=1)
     complete = models.BooleanField(default=False)
     date_ordered = models.DateTimeField(auto_now_add=True)
     transaction_id = models.CharField(max_length=100)
@@ -72,9 +74,9 @@ class OrderItem(models.Model):
 
 class ShippingAddress(models.Model):
     customer = models.ForeignKey(
-        Customer, on_delete=models.SET_NULL, null=True, blank=True)
-    order = models.ForeignKey(
-        Order, on_delete=models.CASCADE)
+        Customer, on_delete=models.SET_NULL, null=True, blank=True
+    )
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
     address = models.CharField(max_length=200, null=True)
     date_added = models.DateTimeField(auto_now_add=True)
 

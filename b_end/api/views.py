@@ -12,7 +12,6 @@ from .utils import loggedOrder, guestOrder, get_cart_total
 
 
 class ProductListView(APIView):
-
     def get(self, request):
         menu = defaultdict(list)
         for product in Product.objects.all():
@@ -20,8 +19,8 @@ class ProductListView(APIView):
         serializer = MenuSerializer(menu, many=True)
         return Response(serializer.data)
 
-class CartView(APIView):
 
+class CartView(APIView):
     def post(self, request):
         transaction_id = datetime.now().timestamp()
         data = json.loads(request.body)
@@ -33,7 +32,7 @@ class CartView(APIView):
         else:
             customer, order = guestOrder(data)
 
-        total = float(data['total'])
+        total = float(data["total"])
         order.transaction_id = transaction_id
 
         if total == get_cart_total(request, order):
@@ -41,22 +40,19 @@ class CartView(APIView):
         order.save()
 
         ShippingAddress.objects.create(
-            customer=customer,
-            order=order,
-            address=data['address']
+            customer=customer, order=order, address=data["address"]
         )
 
-        return Response('Payment complete!')
+        return Response("Payment complete!")
 
 
 class AuthView(APIView):
     def get(self, request):
-
         content = {
-            'user': str(request.user),  # `django.contrib.auth.User` instance.
+            "user": str(request.user),  # `django.contrib.auth.User` instance.
             # Phone number based on authenticated user
-            'phone': str(Customer.objects.get(name=request.user.username).phone_number),
-            'auth': str(request.auth),  # Auth token
+            "phone": str(Customer.objects.get(name=request.user.username).phone_number),
+            "auth": str(request.auth),  # Auth token
         }
         return Response(content)
 
@@ -67,14 +63,12 @@ class AuthView(APIView):
         if serializer.is_valid():
             user = serializer.save()
             token = Token.objects.get(user=user).key
-            phone = request.data['phoneNumber']
-            data['response'] = "successfully registered a new user"
-            data['username'] = user.username
-            data['phoneNumber'] = phone
-            data['token'] = token
-            customer, created = Customer.objects.get_or_create(
-                phone_number=phone
-            )
+            phone = request.data["phoneNumber"]
+            data["response"] = "successfully registered a new user"
+            data["username"] = user.username
+            data["phoneNumber"] = phone
+            data["token"] = token
+            customer, created = Customer.objects.get_or_create(phone_number=phone)
             customer.user = user
             customer.name = user.username
             customer.save()

@@ -4,7 +4,7 @@ from .serializers import CartSerializer
 
 
 def requestCart(data):
-    cart = data['items']
+    cart = data["items"]
 
     # Defining local variables
     items = []
@@ -13,49 +13,46 @@ def requestCart(data):
 
     # Redefine variables based on request data
     for entry in cart:
-        cartQuantity += int(entry['quantity'])
+        cartQuantity += int(entry["quantity"])
 
-        product = Product.objects.get(id=entry['id'])
-        total = (product.price * entry['quantity'])
+        product = Product.objects.get(id=entry["id"])
+        total = product.price * entry["quantity"]
 
         cartTotal += total
-        cartQuantity += entry['quantity']
+        cartQuantity += entry["quantity"]
 
         item = {
-            'product': {
-                'id': product.id,
-                'name': product.name,
-                'description': product.description,
-                'price': product.price,
-                'category': product.category,
-                'imageURL': product.imageURL
+            "product": {
+                "id": product.id,
+                "name": product.name,
+                "description": product.description,
+                "price": product.price,
+                "category": product.category,
+                "imageURL": product.imageURL,
             },
-            'quantity': entry['quantity'],
-            'get_total': total,
+            "quantity": entry["quantity"],
+            "get_total": total,
         }
         items.append(item)
 
-    return {'items': items, 'cartQuantity': cartQuantity, 'cartTotal': cartTotal}
+    return {"items": items, "cartQuantity": cartQuantity, "cartTotal": cartTotal}
 
 
 # Make Orders
 def PostOrder(data, order):
     requestData = requestCart(data)
-    items = requestData['items']
+    items = requestData["items"]
 
     for item in items:
-        product = Product.objects.get(id=item['product']['id'])
+        product = Product.objects.get(id=item["product"]["id"])
 
         orderItem = OrderItem.objects.create(
-            product=product,
-            order=order,
-            quantity=item['quantity']
+            product=product, order=order, quantity=item["quantity"]
         )
 
 
 def loggedOrder(data, customer):
-    order, created = Order.objects.get_or_create(
-        customer=customer, complete=False)
+    order, created = Order.objects.get_or_create(customer=customer, complete=False)
 
     PostOrder(data, order)
 
@@ -64,19 +61,14 @@ def loggedOrder(data, customer):
 
 def guestOrder(data):
     print(data)
-    name = data['form']['name']
-    phone = data['form']['phone']
+    name = data["form"]["name"]
+    phone = data["form"]["phone"]
 
-    customer, created = Customer.objects.get_or_create(
-        phone_number=phone
-    )
+    customer, created = Customer.objects.get_or_create(phone_number=phone)
     customer.name = name
     customer.save()
 
-    order = Order.objects.create(
-        customer=customer,
-        complete=False
-    )
+    order = Order.objects.create(customer=customer, complete=False)
 
     PostOrder(data, order)
 
