@@ -14,7 +14,7 @@ export const Product: FC<PropsType> = ({ product, addToCart }) => {
   return (
     <div className="menu-item">
       <Image
-        src={`http://127.0.0.1:8000${product.image}`}
+        src={`${process.env.NEXT_PUBLIC_API_URL}${product.image}`}
         alt="menu"
         className="menu-item__image"
         width={600}

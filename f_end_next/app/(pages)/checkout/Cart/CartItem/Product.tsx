@@ -9,7 +9,7 @@ export const Product: FC<propsType> = ({
   return (
     <div className="product">
       <Image
-        src={`http://127.0.0.1:8000${image}`}
+        src={`${process.env.NEXT_PUBLIC_API_URL}${image}`}
         className="product-img"
         alt="Product_img"
         width={1000}
