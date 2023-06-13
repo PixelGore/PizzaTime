@@ -106,7 +106,7 @@ export const CheckoutForm = () => {
 
             <div className="form-group">
               <h3 className="text">
-                We deliver only in Melbourne and it's surroundings !
+                We deliver only in Melbourne and it&apos;s surroundings !
               </h3>
               <Field
                 className="form-control"

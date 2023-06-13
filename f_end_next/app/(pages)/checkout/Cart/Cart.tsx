@@ -1,5 +1,7 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+
 import "./Cart.scss";
 import { Product } from "./CartItem/Product";
 import { useSelector } from "react-redux";
@@ -9,9 +11,8 @@ import {
   getShippingPrice,
   getSubTotal,
 } from "@/app/Redux/Selectors/cartSelector";
-import { useRouter } from "next/navigation";
 
-export const Cart = () => {
+export function Cart() {
   const router = useRouter();
 
   let cartItems = useSelector(getCart);
@@ -32,22 +33,21 @@ export const Cart = () => {
       </div>
 
       <hr className="divider" />
-
       <div className="totals">
         <div className="totals-item">
-          <label>Subtotal:</label>
-          <div>${cartTotal}</div>
+          <label htmlFor="cartTotal">Subtotal:</label>
+          <div id="cartTotal">${cartTotal || "0.00"}</div>
         </div>
         <div className="totals-item">
-          <label>Shipping:</label>
-          <div>${shippingPrice}</div>
+          <label htmlFor="shippingPrice">Shipping:</label>
+          <div id="shippingPrice">${shippingPrice || "0.00"}</div>
         </div>
         <hr />
         <div className="totals-item">
-          <label>Grand Total:</label>
-          <div>${grandTotal}</div>
+          <label htmlFor="grandTotal">Grand Total:</label>
+          <div id="grandTotal">${grandTotal || "0.00"}</div>
         </div>
       </div>
     </div>
   );
-};
+}

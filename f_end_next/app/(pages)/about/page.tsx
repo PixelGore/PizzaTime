@@ -57,14 +57,14 @@ export default function About() {
           </div>
 
           <div className="about-section__review">
-            <h3>"Best pizza in Melbourne"</h3>
+            <h3>&quot;Best pizza in Melbourne&quot;</h3>
             <p>
               A place with great atmosphere and even greater pizza. The pizza
               base is thin and the toppings are very rich. All of the pizzas
               made here are fresh so be patient as there is a decent wait time.
               The calamari is also expertly made, not greasy and very tender.
-              Highly recommended if you're looking for an accompaniment to your
-              pizza.
+              Highly recommended if you&apos;re looking for an accompaniment to
+              your pizza.
             </p>
             <h4>John Doe</h4>
           </div>

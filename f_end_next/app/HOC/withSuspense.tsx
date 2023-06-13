@@ -1,10 +1,10 @@
 import React, { ComponentType, Suspense } from "react";
-import PreLoader from "../Components/common/preloader/Preloader";
+import Loading from "@/app/loading";
 
 export function withSuspense<WCP>(WrappedComponent: ComponentType<WCP>) {
-  return (props: WCP) => {
+  return function WrappedComponentWithSuspense(props: WCP) {
     return (
-      <Suspense fallback={<PreLoader />}>
+      <Suspense fallback={<Loading />}>
         {/* @ts-ignore */}
         <WrappedComponent {...props} />
       </Suspense>
