@@ -31,7 +31,7 @@ export const CartItem: FC<cartItemType> = ({
   return (
     <div className="cart-item">
       <Image
-        src={`${process.env.NEXT_PUBLIC_API_URL}${product.image}`}
+        src={`${process.env.BACKEND_API_URL}${product.image}`}
         alt="product"
         width={300}
         height={300}
