@@ -7,6 +7,6 @@ services:
       dockerfile: docker/staging/Dockerfile
     image: with-docker-multi-env-staging
     env_file:
-      - ../../.env.staging # name of the env file
+      - ../../.env.staging
     ports:
       - "${APP_PORT}:3000"

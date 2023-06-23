@@ -7,6 +7,6 @@ services:
       dockerfile: docker/development/Dockerfile
     image: with-docker-multi-env-development
     env_file:
-      - ../../.env.development # name of the env file
+      - ../../.env.development
     ports:
       - "${APP_PORT}:3000"

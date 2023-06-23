@@ -7,6 +7,6 @@ services:
       dockerfile: docker/production/Dockerfile
     image: with-docker-multi-env-production
     env_file:
-      - ../../.env.production # name of the env file
+      - ../../.env.production
     ports:
       - "${APP_PORT}:3000"

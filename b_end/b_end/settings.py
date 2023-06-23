@@ -149,7 +149,5 @@ MEDIA_URL = "/img/"
 MEDIA_ROOT = BASE_DIR / "static/img"
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:4200",
-    "http://localhost:3000",
-    "http://localhost:3001",
+    os.getenv("CLIENT_LINK")
 ]
