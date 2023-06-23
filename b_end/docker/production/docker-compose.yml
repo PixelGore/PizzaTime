@@ -4,11 +4,11 @@ services: # the different images that will be running as containers
   nginx: # service name
 
     # location of the dockerfile that defines the nginx image. The dockerfile will be used to spin up an image during the build stage.
-    build: ./nginx
+    build: ../../nginx
 
     # map the machine port 1339 to the container port 80. Any traffic from 1339 externally will be passed to port 80 of the NGINX container. You can access this container viea localhost:1339
     ports:
-      - 1339:80
+      - '${NGINX_PORT}:80'
 
 
     # static storages provisioned since django does not handle static files in production
@@ -25,12 +25,14 @@ services: # the different images that will be running as containers
   web: # service name
 
     #build the image for the web service from the dockerfile in parent directory.
-    build: .
+    build:
+      context: ../../
+      dockerfile: docker/production/Dockerfile
 
     # command directive passes the parameters to the service and they will be executed by the service. In this example, these are django commands which will be executed in the container where django lives.
     command: sh -c "python manage.py makemigrations &&
       python manage.py migrate &&
-      gunicorn b_end.wsgi:application --bind 0.0.0.0:${APP_PORT}"
+      gunicorn b_end.wsgi:application --bind 0.0.0.0:8000"
 
     # map data and files from parent directory in host to microservice directory in docker container
     volumes:
@@ -39,14 +41,14 @@ services: # the different images that will be running as containers
 
     # file where env variables are stored. Used as best practice so as not to expose secret keys
     env_file:
-      - .env # name of the env file
+      - ../../.env.production # name of the env file
 
     # name of the image
     image: microservice_app
 
     # expose the port to other services defined here so that they can access this service via the exposed port. In the case of Django, this is 8000 by default
     ports:
-      - '${APP_PORT}:${APP_PORT}' # retrieved from the .env file
+      - '${APP_PORT}:8000' # retrieved from the .env file
 
     restart: "on-failure"
 
