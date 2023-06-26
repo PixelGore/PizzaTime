@@ -1,3 +1,7 @@
+.PHONY: dev
+dev: ## Start the development server.
+	yarn dev
+
 .PHONY: build-development
 build-development: ## Build the development docker image.
 	docker-compose --env-file .env.development -f docker/development/docker-compose.yml build

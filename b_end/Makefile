@@ -1,4 +1,8 @@
 .PHONY: build-development
+dev: ## Start development server.
+	source venv/Scripts/activate && python manage.py runserver
+
+.PHONY: build-development
 build-development: ## Build the development docker image.
 	docker-compose --env-file .env.development -f docker/development/docker-compose.yml build
 
