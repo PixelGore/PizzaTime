@@ -5,15 +5,18 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('api', '0001_initial'),
+        ("api", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='order',
-            name='customer',
-            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to='api.customer'),
+            model_name="order",
+            name="customer",
+            field=models.ForeignKey(
+                default=1,
+                on_delete=django.db.models.deletion.CASCADE,
+                to="api.customer",
+            ),
         ),
     ]

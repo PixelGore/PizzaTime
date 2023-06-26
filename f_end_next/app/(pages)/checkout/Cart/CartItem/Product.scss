@@ -1,0 +1,45 @@
+.product {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue",
+    Helvetica, Arial, sans-serif;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  margin-bottom: 10px;
+
+  &:last-child {
+    border: none;
+    margin-bottom: 0;
+  }
+
+  .product-img {
+    width: 90px;
+  }
+
+  .product-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+
+    .product-info {
+      margin-left: 5px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+
+      .product-title {
+        margin-left: 5px;
+        font-size: 1.2em;
+        font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium";
+      }
+
+      .product-pricing {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+
+    .product-line-price {
+      width: 100%;
+      text-align: center;
+    }
+  }
+}

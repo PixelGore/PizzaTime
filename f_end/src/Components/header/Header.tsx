@@ -1,35 +1,48 @@
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import "./Header.scss";
 import logo from "../../assets/common/logo.svg";
 import { useState } from "react";
 import { Menu } from "./menu/Menu";
 import { Cart } from "./cart/Cart";
-import { useSelector } from "react-redux";
-import { getCart, getCartCount, getSubTotal } from "../../Redux/Selectors/cartSelector";
+import {
+  getCart,
+  getCartCount,
+  getSubTotal,
+} from "../../Redux/Selectors/cartSelector";
 import { getAuthMe } from "../../Redux/Selectors/authSelector";
+import { CustomNavLink } from "../common/customNavLink/CustomNavLink";
 
 export const Header: React.FC = () => {
   const [isOpenBrg, setisOpenBrg] = useState(false);
-  const [isOpenCart, setisOpenCart] = useState(false)
-  let cartItems = useSelector(getCart)
-  let cartCount = useSelector(getCartCount)
-  let subTotal = useSelector(getSubTotal)
-  const Me = useSelector(getAuthMe)
+  const [isOpenCart, setisOpenCart] = useState(false);
+  let cartItems = useSelector(getCart);
+  let cartCount = useSelector(getCartCount);
+  let subTotal = useSelector(getSubTotal);
+  const Me = useSelector(getAuthMe);
 
   return (
     <div className="header_wrapper">
       <header className="header">
         <div className="container">
           <div className="header__body">
-            <NavLink to="/" className="header__logo" onClick={() => { setisOpenBrg(false); setisOpenCart(false) }}>
+            <NavLink
+              to="/"
+              className="header__logo"
+              onClick={() => {
+                setisOpenBrg(false);
+                setisOpenCart(false);
+              }}
+            >
               <img src={logo} alt="Header__logo" />
             </NavLink>
             {/* Burger */}
             <div
-              className={
-                isOpenBrg ? "header__burger active" : "header__burger"
-              }
-              onClick={() => { setisOpenBrg(!isOpenBrg); setisOpenCart(false) }}
+              className={isOpenBrg ? "header__burger active" : "header__burger"}
+              onClick={() => {
+                setisOpenBrg(!isOpenBrg);
+                setisOpenCart(false);
+              }}
             >
               <span className="burger_middle"></span>
             </div>
@@ -38,44 +51,56 @@ export const Header: React.FC = () => {
             <nav className="header__menu">
               <ul className="header__list">
                 <li>
-                  <NavLink
+                  <CustomNavLink
                     to="/home"
                     className="header__link"
                     activeClassName="isActive"
-                    onClick={() => { setisOpenBrg(false); setisOpenCart(false) }}
+                    onClick={() => {
+                      setisOpenBrg(false);
+                      setisOpenCart(false);
+                    }}
                   >
                     <span className="header__link-text">Home</span>
-                  </NavLink>
+                  </CustomNavLink>
                 </li>
                 <li>
-                  <NavLink
+                  <CustomNavLink
                     to="/about"
                     className="header__link"
                     activeClassName="isActive"
-                    onClick={() => { setisOpenBrg(false); setisOpenCart(false) }}
+                    onClick={() => {
+                      setisOpenBrg(false);
+                      setisOpenCart(false);
+                    }}
                   >
                     <span className="header__link-text">About us</span>
-                  </NavLink>
+                  </CustomNavLink>
                 </li>
                 <li>
-                  <NavLink
+                  <CustomNavLink
                     to="/menu"
                     className="header__link"
                     activeClassName="isActive"
-                    onClick={() => { setisOpenBrg(false); setisOpenCart(false) }}
+                    onClick={() => {
+                      setisOpenBrg(false);
+                      setisOpenCart(false);
+                    }}
                   >
                     <span className="header__link-text">Menu</span>
-                  </NavLink>
+                  </CustomNavLink>
                 </li>
                 <li>
-                  <NavLink
+                  <CustomNavLink
                     to="/contacts"
                     className="header__link"
                     activeClassName="isActive"
-                    onClick={() => { setisOpenBrg(false); setisOpenCart(false) }}
+                    onClick={() => {
+                      setisOpenBrg(false);
+                      setisOpenCart(false);
+                    }}
                   >
                     <span className="header__link-text">Contacts</span>
-                  </NavLink>
+                  </CustomNavLink>
                 </li>
               </ul>
             </nav>
@@ -85,14 +110,25 @@ export const Header: React.FC = () => {
                 <NavLink
                   to="/login"
                   className="header__login-link"
-                  onClick={() => { setisOpenBrg(false); setisOpenCart(false) }}
+                  onClick={() => {
+                    setisOpenBrg(false);
+                    setisOpenCart(false);
+                  }}
                 >
                   <span className="login-text">
-                    <span className="material-icons">{Me.length > 0 ? "account_circle" : "login"}</span>
+                    <span className="material-icons">
+                      {Me.length > 0 ? "account_circle" : "login"}
+                    </span>
                   </span>
                 </NavLink>
               </div>
-              <div className="header__cart" onClick={() => { setisOpenCart(!isOpenCart); setisOpenBrg(false) }}>
+              <div
+                className="header__cart"
+                onClick={() => {
+                  setisOpenCart(!isOpenCart);
+                  setisOpenBrg(false);
+                }}
+              >
                 <span className="cart-text" data-before={cartCount}>
                   <span className="material-icons">shopping_cart</span>
                 </span>
@@ -102,7 +138,12 @@ export const Header: React.FC = () => {
         </div>
       </header>
       <Menu isActive={isOpenBrg} setIsActive={setisOpenBrg} />
-      <Cart cartItems={cartItems} isActive={isOpenCart} setisOpenCart={setisOpenCart} subTotal={subTotal} />
+      <Cart
+        cartItems={cartItems}
+        isActive={isOpenCart}
+        setisOpenCart={setisOpenCart}
+        subTotal={subTotal}
+      />
     </div>
   );
 };

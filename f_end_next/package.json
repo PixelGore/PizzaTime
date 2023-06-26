@@ -1,0 +1,42 @@
+{
+  "name": "f_end_next",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "format": "prettier --check --ignore-path .gitignore .",
+    "format:fix": "prettier --write --ignore-path .gitignore ."
+  },
+  "dependencies": {
+    "@emotion/react": "^11.11.0",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.11.16",
+    "@mui/material": "^5.13.4",
+    "@reduxjs/toolkit": "^1.9.5",
+    "@types/node": "20.2.5",
+    "@types/react": "^18.2.8",
+    "@types/react-dom": "^18.2.4",
+    "autoprefixer": "10.4.14",
+    "axios": "^1.4.0",
+    "classnames": "^2.3.2",
+    "eslint": "^8.42.0",
+    "eslint-config-next": "^13.4.4",
+    "formik": "^2.4.1",
+    "next": "^13.4.4",
+    "next-redux-wrapper": "^8.1.0",
+    "postcss": "8.4.24",
+    "prettier": "^2.8.8",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-paypal-button-v2": "^2.6.3",
+    "react-redux": "^8.0.7",
+    "redux-thunk": "^2.4.2",
+    "sass": "^1.62.1",
+    "tailwindcss": "3.3.2",
+    "typescript": "5.1.3",
+    "yup": "^1.2.0"
+  }
+}

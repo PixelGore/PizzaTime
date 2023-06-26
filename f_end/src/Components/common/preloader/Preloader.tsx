@@ -1,4 +1,3 @@
-//Imports
 import React from 'react';
 import preLoader from '../../../assets/common/preLoader.svg'
 import './Preloader.scss'

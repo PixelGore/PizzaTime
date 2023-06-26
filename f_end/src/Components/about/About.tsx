@@ -1,14 +1,14 @@
 import { FC } from "react";
 import "./About.scss";
-import image from "../../assets/common/pizza.svg";
 import Map from "./map/GMap";
+import PizzaIcon from "../../assets/common/pizza";
 
 const About: FC = () => {
   return (
     <div className="about-content">
       <div className="about-section">
         <div className="about-section__image">
-          <img src={image} alt="logo__image" className="section-about__logo" />
+          <PizzaIcon className="section-about__logo" />
         </div>
 
         <div className="about-section__main">

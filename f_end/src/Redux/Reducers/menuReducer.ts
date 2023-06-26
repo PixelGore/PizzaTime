@@ -1,7 +1,7 @@
-import { menuAPI } from './../../api/menuAPI';
-import { InferActionTypes, BaseThunkType } from './../reduxStore';
-import { MenuType } from './../../types/types';
 import { Dispatch } from 'redux';
+import { menuAPI } from '../../api/menuAPI';
+import { InferActionTypes, BaseThunkType } from '../reduxStore';
+import { MenuType } from '../../types/types';
 
 
 // ActionCreators

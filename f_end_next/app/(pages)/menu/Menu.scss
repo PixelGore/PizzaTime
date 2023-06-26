@@ -1,0 +1,122 @@
+.menu-content {
+  padding: 50px 0;
+  margin: 0 20vw;
+  .menu-category {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    .category__title {
+      font-family: "Montserrat", sans-serif;
+      text-transform: uppercase;
+      font-weight: 900;
+      font-size: 35px;
+      color: #fff;
+    }
+
+    .menu-category__link {
+      text-decoration: none;
+      color: #fff;
+    }
+  }
+}
+
+.menu-items {
+  padding: 5px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  justify-self: center;
+  column-gap: 3em;
+  row-gap: 1em;
+  color: #fff;
+  margin-left: 3vw;
+
+  .menu-item {
+    padding: 10px;
+    display: grid;
+    width: 240px;
+    height: 425px;
+    color: #fff;
+
+    .menu-item__image {
+      border-radius: 16px;
+      height: 310px;
+      width: 220px;
+    }
+
+    &:hover {
+      border: 1px solid #d1b209;
+    }
+
+    .menu-item__title {
+      font-family: "Roboto", sans-serif;
+      padding-top: 5px;
+      font-size: 1.3em;
+      cursor: default;
+    }
+
+    .menu-item__info {
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 10px;
+
+      .menu__info-btn {
+        cursor: pointer;
+      }
+    }
+
+    .menu-item-end {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 2px solid rgb(255, 166, 80);
+      border-radius: 20px;
+      height: 40px;
+      padding: 0 10px;
+      cursor: pointer;
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .menu-items {
+    column-gap: 2em;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+@media (max-width: 800px) {
+  .menu-items {
+    margin: 0;
+    margin-left: 0;
+    column-gap: 1em;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .menu-content {
+    margin: 0 5vw;
+  }
+}
+
+@media (max-width: 767px) {
+  .menu-items {
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+  }
+}
+@media (max-width: 530px) {
+  .menu-items {
+    grid-template-columns: 1fr;
+    justify-items: center;
+
+    .menu-item {
+      width: 100%;
+      height: auto;
+      padding: 10px 30px;
+      .menu-item__image {
+        display: block;
+        width: auto;
+        height: auto;
+        margin: 0 auto;
+      }
+    }
+  }
+}

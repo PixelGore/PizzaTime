@@ -1,6 +1,6 @@
-import { authAPI } from './../../api/authApi';
 import { Dispatch } from 'react';
-import { BaseThunkType, InferActionTypes } from './../reduxStore';
+import { authAPI } from '../../api/authApi';
+import { BaseThunkType, InferActionTypes } from '../reduxStore';
 
 //Action Creators
 export const actions = {
